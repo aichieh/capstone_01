@@ -65,17 +65,6 @@ result['AUC'] = [round(roc_auc_score(y_test, lg_probs),2)]
 
 # Explaination of the features displays along with the graph
 st.markdown('**Explaination of the feature selected:**')
-gbc_auc = roc_auc_score(y_test, lg_probs)
-gbc_fpr, gbc_tpr, gbc_thresholds = roc_curve(y_test, lg_probs)
-plt.plot(gbc_fpr, gbc_tpr, label='ROC Curve (AUC = %0.2f)' % (gbc_auc))
-plt.plot([0, 1], [0, 1], linestyle='--', color='red', label='No skill')   
-plt.plot([0, 0, 1], [0, 1, 1], linestyle=':', color='green', label='Perfect Classifier')
-plt.xlim([-0.05, 1.05])
-plt.ylim([-0.05, 1.05])
-plt.xlabel('False positive rate')
-plt.ylabel('True positive rate')
-plt.legend(loc="lower right")
-plt.show()
 
 st.sidebar.markdown("""
 Input your data here.
