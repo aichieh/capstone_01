@@ -3,25 +3,25 @@ import streamlit as st
 import pandas as pd 
 import plotly.express as px
 import plotly.io as pio
-from PIL import Image
-import pickle
+#from PIL import Image
+import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.metrics import roc_auc_score, roc_curve
-
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 
 # Set the plotly template
 pio.templates.default = "plotly_white"
 
 # Setting the title of the tab and the favicon
-st.set_page_config(page_title='Examining Hypertension Using Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
+#st.set_page_config(page_title='Examining Hypertension Using Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
 
 # Setting the title on the page with some styling
 st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
 
 # Read the data
-df1 = pickle.load(open('stroke.pkl', 'rb'))
+df1 = pd.read_csv("./output/df_try.csv")
 
 # Creating the container for the first plot
 #with st.beta_expander('Stroke Prediction'):
@@ -30,6 +30,7 @@ df1 = pickle.load(open('stroke.pkl', 'rb'))
 #    cat_option = st.selectbox('Select a feature to examine', cat_cols, key='cat_cols1')
 
 # The code to run the first plot
+target = 'stroke'
 X = df1.drop([target], axis=1)
 y = df1[target]
 
