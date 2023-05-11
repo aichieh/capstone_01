@@ -22,7 +22,41 @@ st.markdown("<h1 style='text-align: center'>Examining Hypertension Using Health 
 
 # Read the data
 df1 = pd.read_csv("./output/df_try.csv")
+# Creating the container for the first plot
+#with st.beta_expander('Stroke Prediction'):
 
+# Creating a selectbox dropdown with the categorical features to choose from
+#    cat_option = st.selectbox('Select a feature to examine', cat_cols, key='cat_cols1')
+
+# The code to run the first plot
+
+#Predict training set:
+y_pred = lg.predict(X_test)
+
+CM = confusion_matrix(y_test, y_pred)
+TN = CM[0][0]
+FN = CM[1][0]
+TP = CM[1][1]
+FP = CM[0][1]
+
+result=pd.DataFrame()
+# Sensitivity, hit rate, recall, or true positive rate
+result['TPR'] = [round(TP/(TP+FN),2)]
+ # Specificity or true negative rate
+result['TNR'] = [round(TN/(TN+FP),2) ]
+        # Fall out or false positive rate
+result['FPR'] = [round(FP/(FP+TN),2)]
+         # False negative rate
+result['FNR'] = [round(FN/(TP+FN),2)]
+
+lg_probs = lg.predict_proba(X_test)
+        # keep probabilities for the positive outcome only
+lg_probs = lg_probs[:, 1]
+result['AUC'] = [round(roc_auc_score(y_test, lg_probs),2)]
+
+# Explaination of the features displays along with the graph
+st.markdown('**Explaination of the feature selected:**')
+        
 st.sidebar.markdown("""
 Input your data here.
 """)
@@ -95,41 +129,7 @@ if st.sidebar.button('Submit'):
         yes = prediction_proba[1]
         no = prediction_proba[0]
         
-# Creating the container for the first plot
-#with st.beta_expander('Stroke Prediction'):
 
-# Creating a selectbox dropdown with the categorical features to choose from
-#    cat_option = st.selectbox('Select a feature to examine', cat_cols, key='cat_cols1')
-
-# The code to run the first plot
-
-#Predict training set:
-y_pred = lg.predict(X_test)
-
-CM = confusion_matrix(y_test, y_pred)
-TN = CM[0][0]
-FN = CM[1][0]
-TP = CM[1][1]
-FP = CM[0][1]
-
-result=pd.DataFrame()
-# Sensitivity, hit rate, recall, or true positive rate
-result['TPR'] = [round(TP/(TP+FN),2)]
- # Specificity or true negative rate
-result['TNR'] = [round(TN/(TN+FP),2) ]
-        # Fall out or false positive rate
-result['FPR'] = [round(FP/(FP+TN),2)]
-         # False negative rate
-result['FNR'] = [round(FN/(TP+FN),2)]
-
-lg_probs = lg.predict_proba(X_test)
-        # keep probabilities for the positive outcome only
-lg_probs = lg_probs[:, 1]
-result['AUC'] = [round(roc_auc_score(y_test, lg_probs),2)]
-
-# Explaination of the features displays along with the graph
-st.markdown('**Explaination of the feature selected:**')
-        
         
         
         st.markdown("<h2 style='text-align: center; color:#99ffff;'><u>Prediction </u></h2>", unsafe_allow_html = True)
