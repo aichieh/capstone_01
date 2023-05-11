@@ -8,7 +8,7 @@ from PIL import Image
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.metrics import roc_auc_score, roc_curve
-
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 
 # Set the plotly template
 pio.templates.default = "plotly_white"
