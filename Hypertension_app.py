@@ -108,7 +108,7 @@ if st.sidebar.button('Submit'):
         st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
         st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
         # Reads in saved classification model
-        load_clf = pickle.load(open('heart_disease.pkl', 'rb'))
+        load_clf = pickle.load(open('stroke.pkl', 'rb'))
         
         # Apply model to make predictions
         prediction = load_clf.predict(features)
