@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 from PIL import Image
+import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
@@ -14,7 +15,7 @@ from sklearn.model_selection import train_test_split, cross_val_score, GridSearc
 pio.templates.default = "plotly_white"
 
 # Setting the title of the tab and the favicon
-st.set_page_config(page_title='Examining Hypertension Using Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
+#st.set_page_config(page_title='Examining Hypertension Using Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
 
 # Setting the title on the page with some styling
 st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
