@@ -31,28 +31,28 @@ df1 = pd.read_csv("./output/df_try.csv")
 # The code to run the first plot
 
 #Predict training set:
-y_pred = lg.predict(X_test)
+#y_pred = lg.predict(X_test)
 
-CM = confusion_matrix(y_test, y_pred)
-TN = CM[0][0]
-FN = CM[1][0]
-TP = CM[1][1]
-FP = CM[0][1]
+#CM = confusion_matrix(y_test, y_pred)
+#TN = CM[0][0]
+#FN = CM[1][0]
+#TP = CM[1][1]
+#FP = CM[0][1]
 
-result=pd.DataFrame()
+#result=pd.DataFrame()
 # Sensitivity, hit rate, recall, or true positive rate
-result['TPR'] = [round(TP/(TP+FN),2)]
+#result['TPR'] = [round(TP/(TP+FN),2)]
  # Specificity or true negative rate
-result['TNR'] = [round(TN/(TN+FP),2) ]
+#result['TNR'] = [round(TN/(TN+FP),2) ]
         # Fall out or false positive rate
-result['FPR'] = [round(FP/(FP+TN),2)]
+#result['FPR'] = [round(FP/(FP+TN),2)]
          # False negative rate
-result['FNR'] = [round(FN/(TP+FN),2)]
+#result['FNR'] = [round(FN/(TP+FN),2)]
 
-lg_probs = lg.predict_proba(X_test)
+#lg_probs = lg.predict_proba(X_test)
         # keep probabilities for the positive outcome only
-lg_probs = lg_probs[:, 1]
-result['AUC'] = [round(roc_auc_score(y_test, lg_probs),2)]
+#lg_probs = lg_probs[:, 1]
+#result['AUC'] = [round(roc_auc_score(y_test, lg_probs),2)]
 
 # Explaination of the features displays along with the graph
 st.markdown('**Explaination of the feature selected:**')
