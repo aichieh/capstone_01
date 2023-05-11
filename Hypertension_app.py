@@ -11,11 +11,19 @@ from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 
+def value(lst, string):
+    for i in range(len(lst)):
+        if lst[i] == string:
+            return i
+sex=['Female', 'Male']
+#edu=['10th pass', '12th pass/Diploma', 'Bachelors', 'Masters or Higher']
+yn=['NO', 'YES']
+
 # Set the plotly template
 pio.templates.default = "plotly_white"
 
 # Setting the title of the tab and the favicon
-#st.set_page_config(page_title='Examining Hypertension Using Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
+st.set_page_config(page_title='Examining Hypertension Using Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
 
 # Setting the title on the page with some styling
 st.markdown("<h1 style='text-align: center'>Examining Hypertension Using Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
@@ -60,8 +68,8 @@ st.markdown('**Explaination of the feature selected:**')
 st.sidebar.markdown("""
 Input your data here.
 """)
-gender= st.sidebar.slider('Sex', ('NO', 'YES'))
-age= st.sidebar.slider('Age', 1, 100, 30)
+gender = st.sidebar.slider('Sex', ('NO', 'YES'))
+age = st.sidebar.slider('Age', 1, 100, 30)
 weight = st.sidebar.selectbox('Weight (lb)', 10.0, 400.0, 150.0)
 waist_circumference = st.sidebar.selectbox('Waist Circumference (inch)', 10.0, 80.0, 30.0)
 systolic_bp = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
@@ -84,13 +92,6 @@ heart_attack = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES'))
 #current_smoker = st.sidebar.selectbox('Current Smoker', ('NO', 'YES'))
 #cigsPerDay = st.sidebar.slider('Cigarettes per Day', 0, 100, 20)
 
-def value(lst, string):
-    for i in range(len(lst)):
-        if lst[i] == string:
-            return i
-sex=['Female', 'Male']
-#edu=['10th pass', '12th pass/Diploma', 'Bachelors', 'Masters or Higher']
-yn=['NO', 'YES']
 
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'>Update your details in the sidebar</h3>", unsafe_allow_html = True)
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_allow_html = True)
