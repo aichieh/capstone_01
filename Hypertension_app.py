@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd 
 import plotly.express as px
 import plotly.io as pio
-from PIL import Image
+#from PIL import Image
 import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LogisticRegression
