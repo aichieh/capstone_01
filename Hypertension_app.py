@@ -5,19 +5,12 @@ import plotly.express as px
 import plotly.io as pio
 #from PIL import Image
 import matplotlib.pyplot as plt
+import pickle 
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-
-def value(lst, string):
-    for i in range(len(lst)):
-        if lst[i] == string:
-            return i
-sex=['Female', 'Male']
-#edu=['10th pass', '12th pass/Diploma', 'Bachelors', 'Masters or Higher']
-yn=['NO', 'YES']
 
 # Set the plotly template
 pio.templates.default = "plotly_white"
@@ -26,108 +19,121 @@ pio.templates.default = "plotly_white"
 st.set_page_config(page_title='Examining Hypertension Using Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
 
 # Setting the title on the page with some styling
-st.markdown("<h1 style='text-align: center'>Examining Hypertension Using Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
 
 # Read the data
-#df1 = pd.read_csv("./output/df_try.csv")
-# Creating the container for the first plot
-#with st.beta_expander('Stroke Prediction'):
-
-# Creating a selectbox dropdown with the categorical features to choose from
-#    cat_option = st.selectbox('Select a feature to examine', cat_cols, key='cat_cols1')
-
-# The code to run the first plot
-
-#Predict training set:
-#y_pred = lg.predict(X_test)
-
-#CM = confusion_matrix(y_test, y_pred)
-#TN = CM[0][0]
-#FN = CM[1][0]
-#TP = CM[1][1]
-#FP = CM[0][1]
-
-#result=pd.DataFrame()
-# Sensitivity, hit rate, recall, or true positive rate
-#result['TPR'] = [round(TP/(TP+FN),2)]
- # Specificity or true negative rate
-#result['TNR'] = [round(TN/(TN+FP),2) ]
-        # Fall out or false positive rate
-#result['FPR'] = [round(FP/(FP+TN),2)]
-         # False negative rate
-#result['FNR'] = [round(FN/(TP+FN),2)]
-
-#lg_probs = lg.predict_proba(X_test)
-        # keep probabilities for the positive outcome only
-#lg_probs = lg_probs[:, 1]
-#result['AUC'] = [round(roc_auc_score(y_test, lg_probs),2)]
-
-# Explaination of the features displays along with the graph
-#st.markdown('**Explaination of the feature selected:**')
+df = pd.read_csv("./output/df_stroke.csv")
+if st.sidebar.checkbox("Display data", False):
+    st.subheader("Show NHANES dataset")
+    st.write(df)
 
 st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
-Input your data here.
+Input your data here .
 """)
-gender = st.sidebar.slider('Sex', ('NO', 'YES'))
-age = st.sidebar.slider('Age', 1, 100, 30)
-weight = st.sidebar.selectbox('Weight (lb)', 10.0, 400.0, 150.0)
-waist_circumference = st.sidebar.selectbox('Waist Circumference (inch)', 10.0, 80.0, 30.0)
-systolic_bp = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
-BMI = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
+sex = df['gender']
+age = df['age']
+weight = df['weight']
+height = df['height']
+waist_circumference = df['waist_circumference']
+systolic_bp = df['systolic_bp']
+heart_rate = df['heart_rate']
+BMI = df['BMI']
+hypertension = df['hypertension']
+take_HTN_medicine = df['take_HTN_medicine']
+high_cholesterol = df['high_cholesterol']
+take_HCL_medicine = df['take_HCL_medicine']
+diabetes = df['diabetes']
+#stroke = df['stroke']
+heart_failure = df['heart_failure']
+CAD = df['CAD']
+angina = df['angina']
+heart_attack = df['heart_attack']
+sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
+age_choice = st.sidebar.slider('Age', 1, 100, 30)
+weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
+height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
+waist_circumference_choice  = st.sidebar.slider('Waist Circumference (inch)', 10.0, 80.0, 30.0)
+systolic_bp_choice = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
+heart_rate_choice = st.sidebar.slider('Heart Rate (per minute)', 30.0, 150.0, 40.0)
+BMI_choice = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
+hypertension_choice = st.sidebar.selectbox('Have hypertension', ('NO', 'YES'))
+take_HTN_medicine_choice = st.sidebar.selectbox('Takes BP medicines', ('NO', 'YES'))
+high_cholesterol_choice = st.sidebar.selectbox('Have high cholesterol', ('NO', 'YES'))
+take_HCL_medicine_choice = st.sidebar.selectbox('Takes cholesterol medicines', ('NO', 'YES'))
+diabetes_choice = st.sidebar.selectbox('Have diabetes', ('NO', 'YES'))
+#stroke_choice = st.sidebar.selectbox('Had any prevalent Stroke', ('NO', 'YES'))
+heart_failure_choice = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
+CAD_choice = st.sidebar.selectbox('Had any coronary heart disease', ('NO', 'YES'))
+angina_choice = st.sidebar.selectbox('Had any angina', ('NO', 'YES'))
+heart_attack_choice = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES'))
 
-hypertension = st.sidebar.selectbox('Have hypertension', ('NO', 'YES'))
-take_HTN_medicine = st.sidebar.selectbox('Takes BP medicines', ('NO', 'YES'))
-high_cholesterol = st.sidebar.slider('Have high cholesterol', ('NO', 'YES'))
-take_HCL_medicine = st.sidebar.selectbox('Takes cholesterol medicines', ('NO', 'YES'))
-diabetes = st.sidebar.selectbox('Have diabetes', ('NO', 'YES'))
-stroke = st.sidebar.selectbox('Had any prevalent Stroke', ('NO', 'YES'))
-heart_failure = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
-coronary_heart_disease = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
-angina = st.sidebar.selectbox('Had any angina', ('NO', 'YES'))
-heart_attack = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES'))
-
-#60_sec_pulse = st.sidebar.slider('Heart Rate (per minute)', 30.0, 130.0, 40.0)
-#glucose = st.sidebar.slider('Glucose (mg/dl)', 100.0, 500.0, 110.0)
-#education = st.sidebar.selectbox('Education', ('10th pass', '12th pass/Diploma', 'Bachelors', 'Masters or Higher'))
-#current_smoker = st.sidebar.selectbox('Current Smoker', ('NO', 'YES'))
-#cigsPerDay = st.sidebar.slider('Cigarettes per Day', 0, 100, 20)
-
+def value(lst, string):
+    for i in range(len(lst)):
+        if lst[i] == string:
+            return i
+sex=['Female', 'Male']
+yn=['NO', 'YES']
 
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'>Update your details in the sidebar</h3>", unsafe_allow_html = True)
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_allow_html = True)
-if st.sidebar.button('Submit'):
-        data = {'gender': value(sex, male),
-                'age': age,
-                'weight': weight,
-                'waist_circumference': waist_circumference,
-                'systolic_bp': systolic_bp,
-                'BMI': BMI,
-                'hypertension': value(yn, hypertension),
-                'take_HTN_medicine': value(yn, hypertension),
-                'high_cholesterol': value(yn, high_cholesterol),
-                'take_HCL_medicine': value(yn, take_HCL_medicine),
-                'diabetes': value(yn, diabetes),
-                'stroke': value(yn, stroke),
-                'heart_failure': value(yn, heart_failure),
-                'coronary_heart_disease': value(yn, coronary_heart_disease),
-                'angina': value(yn, angina),
-                'heart_attack': value(yn, heart_attack)}
-#'heartRate': heart_rate,
-#'glucose': glucose}
-#'education': value(edu, education),
-#'currentSmoker': value(yn, current_smoker),
-#'cigsPerDay': cigsPerDay,  
-        features = pd.DataFrame(data, index=[0])
+data = {'weight': weight_choice,
+        'height': height_choice,
+        'BMI': BMI_choice,
+        'waist_circumference': waist_circumference_choice,
+        'hypertension': value(yn, hypertension_choice),
+        'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
+        'high_cholesterol': value(yn, high_cholesterol_choice),
+        'take_HCL_medicine': value(yn, take_HCL_medicine_choice),
+        'heart_rate': heart_rate_choice,
+        'systolic_bp': systolic_bp_choice,
+        'gender': value(sex, sex_choice),
+        'age': age_choice,
+        'diabetes': value(yn, diabetes_choice),
+        'heart_failure': value(yn, heart_failure_choice),
+        'CAD': value(yn, CAD_choice),
+        'angina': value(yn, angina_choice),
+        'heart_attack': value(yn, heart_attack_choice)
+       #'stroke': value(yn, stroke_choice)
+       }
+features = pd.DataFrame(data, index=[0])
+st.write(features)
 
-        st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
-        st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
-        # Reads in saved classification model
-        load_clf = pickle.load(open('stroke.pkl', 'rb'))
+st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
+st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
+# Reads in saved classification model
+model = pickle.load(open('stroke.pkl', 'rb'))
+           
+# Apply model to make predictions
+prediction = model.predict(features)
+prediction_proba = model.predict_proba(features).reshape(2,)
+st.write("Risk of Stroke") 
+yes = prediction_proba[1]
+st.write(yes)
         
-        # Apply model to make predictions
-        prediction = load_clf.predict(features)
-        prediction_proba = load_clf.predict_proba(features).reshape(2,)
-        yes = prediction_proba[1]
-        no = prediction_proba[0]
+ 
+
         
+        
+#        st.markdown("<h2 style='text-align: center; color:#99ffff;'><u>Prediction </u></h2>", unsafe_allow_html = True)
+#        pred1, pred2, pred3 = st.beta_columns([12, 6, 14])
+#        if prediction==0:
+#            st.markdown("<h1 style='text-align: center; color:#006600;'>You don't have any heart problem.</h1>", unsafe_allow_html = True)
+#            with pred1:
+#                st.write("")
+#            with pred2:
+#                st.image("smile_emo.png")
+#            with pred3:
+#                st.write("")
+#        else:
+#            st.markdown("<h1 style='text-align: center; color:#cc0000;'>Go to a doctor.You may have heart problems.</h1>", unsafe_allow_html = True)
+#            with pred1:
+#                st.write("")
+#            with pred2:
+#                st.image("amb.png")
+#            with pred3:
+#                st.write("")
+  
+# Calculating BMI in backend
+#height1 = height/100
+#bmi = (weight/(height1*height1))
