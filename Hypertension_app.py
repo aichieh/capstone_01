@@ -197,4 +197,5 @@ def assesBMI(BMI, age):
     elif BMI >= 40:
         inf = "BMI level:\nExtreme Obesity"
     return inf
+st.text(assesBMI(bmi, age))
 #data_load_state1.text("Prediction done")
