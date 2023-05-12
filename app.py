@@ -23,6 +23,15 @@ st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Ca
 # Read the data
 df = pd.read_csv("./output/df_try.csv")
 
+Sex = df['gender']
+Age = df['age']
+#models = df['model']
+#engines = df['engine']
+#components = df['components']
+Sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
+Age_choice = st.sidebar.selectbox('Age', 5.0, 100.0, 30.0)
+#model_choice = st.sidebar.selectbox('', models)
+#engine_choice = st.sidebar.selectbox('', engines)
 # Creating the container for the first plot
 #with st.beta_expander('Stroke Prediction'):
 
@@ -33,8 +42,8 @@ st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
 Input your data here .
 """)
-gender = st.sidebar.selectbox('Sex', ('Female', 'Male'))
-age= st.sidebar.slider('Age', 5.0, 100.0, 30.0)
+#gender = st.sidebar.selectbox('Sex', ('Female', 'Male'))
+#age= st.sidebar.slider('Age', 5.0, 100.0, 30.0)
 #weight = st.sidebar.selectbox('Weight (lb)', 10.0, 400.0, 150.0)
 #education = st.sidebar.selectbox('Education', ('10th pass', '12th pass/Diploma', 'Bachelors', 'Masters or Higher'))
 #current_smoker = st.sidebar.selectbox('Current Smoker', ('NO', 'YES'))
