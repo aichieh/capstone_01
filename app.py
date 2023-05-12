@@ -58,7 +58,7 @@ take_HCL_medicine_choice = st.sidebar.selectbox('Takes cholesterol medicines', (
 diabetes_choice = st.sidebar.selectbox('Have diabetes', ('NO', 'YES'))
 stroke_choice = st.sidebar.selectbox('Had any prevalent Stroke', ('NO', 'YES'))
 heart_failure_choice = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
-#CAD_choice = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
+CAD_choice = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
 angina_choice = st.sidebar.selectbox('Had any angina', ('NO', 'YES'))
 heart_attack_choice = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES'))
 
