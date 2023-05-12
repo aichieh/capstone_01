@@ -121,17 +121,17 @@ if st.sidebar.button('Submit'):
         st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
         st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
         # Reads in saved classification model
-        #load_model = pickle.load(open('stroke.pkl', 'rb'))
+        model = pickle.load(open('stroke.pkl', 'rb'))
         
         # Apply model to make predictions
-        target = 'stroke'
-        X = df.drop([target], axis=1)
-        y = df[target]
+        #target = 'stroke'
+        #X = df.drop([target], axis=1)
+        #y = df[target]
         # split
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+        #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
         # Fit the model on training set
-        model=LogisticRegression(max_iter = 30000)
-        model.fit(X_train,y_train)
+        #model=LogisticRegression(max_iter = 30000)
+        #model.fit(X_train,y_train)
         #Predict training set:
         prediction = model.predict(features)
         prediction_proba = model.predict_proba(features).reshape(2,)
