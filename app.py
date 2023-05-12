@@ -100,7 +100,7 @@ yn=['NO', 'YES']
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'>Update your details in the sidebar</h3>", unsafe_allow_html = True)
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_allow_html = True)
 if st.sidebar.button('Submit'):
-        data = {'gender': value(sex, male),
+        data = {#'gender': value(sex, male),
                 'age': age,
                 'weight': weight,
                 'waist_circumference': waist_circumference,
@@ -155,34 +155,3 @@ if st.sidebar.button('Submit'):
 #height1 = height/100
 #bmi = (weight/(height1*height1))
 
-tab1.metric(
-    label="Risk of Stroke", 
-    value=str(round(pred*100/adjst, 1)) + " %", 
-    delta=str(round(delta(userData(), pred)/adjst, 2)) + " percentage points", 
-    help="""
-    This is the indication for the risk of stroke, given the patient data.
-    The change in percentage points compared to your previous indication is displayed smaller below.
-    """,
-    delta_color ="inverse"
-)
-
-tab1.text("Confidence in the risk assessment:\n" + \
-          str(round((1-uncertainty)*100, 1)) + " %."
-)
-
-if predict_button:
-    result = model.predict_proba([[age_m, height_m, weight_m, gender_m,
-                                   chol_m, gluc_m,
-                                   smoke_m, alco_m,
-                                   active_m, bmi_m,
-                                   bpc_m]])
-    #st.write([age_m, height_m, weight_m, gender_m,chol_m, gluc_m,smoke_m, alco_m,active_m, bmi_m,bpc_m])
-    
-    if result[0][0] >= 0.5:
-        risc = 'Negatif Risk'
-    else:
-        risc = 'Pozitif Risk'
-    
-    st.write(risc)
-    st.write('Olasılık:',
-             round(result[0][1]*100, 1), '%')
