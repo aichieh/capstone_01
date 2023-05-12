@@ -97,7 +97,7 @@ yn=['NO', 'YES']
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'>Update your details in the sidebar</h3>", unsafe_allow_html = True)
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_allow_html = True)
 if st.sidebar.button('Submit'):
-        data = {'Sex': value(sex, male),
+        data = {'Sex_choice': value(sex, male),
                 'age': age,
                 'weight': weight,
                 'waist_circumference': waist_circumference,
