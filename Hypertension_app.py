@@ -126,15 +126,15 @@ def delta(l, p):
     return d
 
 #col1, col2 = st.columns(2)
-#st.metric(
-#    label="Risk of Stroke", 
-#    value= str(risk) + " %", 
-#    delta=str(delta(userData(), risk)) + " percentage points", 
-#    help="""
-#    The change in percentage points is displayed below.
-#    """,
-#    delta_color ="inverse"
-#)
+st.metric(
+    label="Risk of Stroke", 
+    value= str(risk) + " %", 
+    delta=str(delta(userData(), risk)) + " percentage points", 
+    help="""
+    The change in percentage points is displayed below.
+    """,
+    delta_color ="inverse"
+)
 
 # Reads in saved classification model
 #model2 = pickle.load(open('htn.pkl', 'rb'))
