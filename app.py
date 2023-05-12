@@ -145,11 +145,11 @@ st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_
 #        else:
 #            st.markdown("<h1 style='text-align: center; color:#cc0000;'>Go to a doctor.You may have heart problems.</h1>", unsafe_allow_html = True)
 #            with pred1:
-                st.write("")
-            with pred2:
-                st.image("amb.png")
-            with pred3:
-                st.write("")
+#                st.write("")
+#            with pred2:
+#                st.image("amb.png")
+#            with pred3:
+#                st.write("")
   
 # Calculating BMI in backend
 #height1 = height/100
