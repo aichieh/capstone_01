@@ -99,8 +99,6 @@ data = {'weight': weight_choice,
 features = pd.DataFrame(data, index=[0])
 st.write(features)
 
-st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
-st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
 # Reads in saved classification model
 model = pickle.load(open('stroke.pkl', 'rb'))
            
