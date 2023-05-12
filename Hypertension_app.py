@@ -17,10 +17,10 @@ from sklearn.model_selection import train_test_split, cross_val_score, GridSearc
 pio.templates.default = "plotly_white"
 
 # Setting the title of the tab and the favicon
-st.set_page_config(page_title='Examining Hypertension Using Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
+st.set_page_config(page_title='Examining Health Care Data', page_icon = ':rain_cloud:', layout = 'centered')
 
 # Setting the title on the page with some styling
-st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center'>Examining Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
 
 # Read the data
 df = pd.read_csv("./output/df_stroke.csv")
