@@ -132,3 +132,4 @@ st.metric(
     """,
     delta_color ="inverse"
 )
+data_load_state1.text("Prediction done")
