@@ -29,7 +29,7 @@ Age = df['age']
 #engines = df['engine']
 #components = df['components']
 Sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
-Age_choice = st.sidebar.selectbox('Age', 5.0, 100.0, 30.0)
+Age_choice = st.sidebar.slider('Age', 5.0, 100.0, 30.0)
 #model_choice = st.sidebar.selectbox('', models)
 #engine_choice = st.sidebar.selectbox('', engines)
 # Creating the container for the first plot
