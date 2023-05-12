@@ -75,8 +75,6 @@ def value(lst, string):
 sex=['Female', 'Male']
 yn=['NO', 'YES']
 
-st.markdown("<h3 style='text-align: center; color:#4dffa6;'>Update your details in the sidebar</h3>", unsafe_allow_html = True)
-st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_allow_html = True)
 data = {'weight': weight_choice,
         'height': height_choice,
         'BMI': BMI_choice,
