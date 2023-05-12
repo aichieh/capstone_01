@@ -52,7 +52,7 @@ age= st.sidebar.slider('Age', 5.0, 100.0, 30.0)
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'>Update your details in the sidebar</h3>", unsafe_allow_html = True)
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_allow_html = True)
 if st.sidebar.button('Submit'):
-        data = {'male': value(sex, male),
+        data = {'gender': value(sex, male),
                 'age': age,
                 'education': value(edu, education),
                 'currentSmoker': value(yn, current_smoker),
