@@ -132,6 +132,3 @@ col.metric(
 #col2.metric("Risk of Diabetes", "", "")
 #col3.metric("Risk of Hypertension", "", "")
  
-# Calculating BMI in backend
-#height1 = height/100
-#bmi = (weight/(height1*height1))
