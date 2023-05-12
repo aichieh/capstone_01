@@ -125,8 +125,8 @@ def delta(l, p):
 
 st.metric(
     label="Risk of Stroke", 
-    value=(prediction_proba*100, 1) + " %", 
-    delta=(delta(userData(), prediction_proba, 2)) + " percentage points", 
+    value=str(round(pred*100/adjst, 1)) + " %", 
+    delta=str(round(delta(userData(), pred)/adjst, 2)) + " percentage points", 
     help="""
     This is the indication for the risk of stroke, given the patient data.
     The change in percentage points compared to your previous indication is displayed smaller below.
