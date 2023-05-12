@@ -104,9 +104,9 @@ model = pickle.load(open('stroke.pkl', 'rb'))
            
 # Apply model to make predictions
 prediction = model.predict(features)
-prediction_proba = model.predict_proba(features)[:, 1]
+prediction_proba = model.predict_proba(features)
 st.write("Risk of Stroke") 
-yes = prediction_proba
+yes = prediction_probap[:,1]
 st.write(yes)
 
 def userData():
