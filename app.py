@@ -30,7 +30,7 @@ Input your data here .
 Sex = df['gender']
 Age = df['age']
 Weight = df['weight']
-Waist Circumference (inch) = df['waist_circumference']
+waist_circumference = df['waist_circumference']
 Sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
 Age_choice = st.sidebar.slider('Age', 1, 100, 30)
 weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
