@@ -107,7 +107,7 @@ prediction = model.predict(features)
 prediction_proba = model.predict_proba(features).reshape(2,)
 st.write("Risk of Stroke") 
 yes = prediction_proba[1]
-st.write(yes)
+st.write(yes*100 + " %")
 
 def userData():
     return []
@@ -123,14 +123,14 @@ def delta(l, p):
         d = l[1] - l[0]
     return d
 
-st.metric(
-    label="Risk of Stroke", 
-    value=str(round(prediction_proba*100, 1)) + " %", 
-    delta=str(round(delta(userData(), prediction_proba), 2)) + " percentage points", 
-    help="""
-    This is the indication for the risk of stroke, given the patient data.
-    The change in percentage points compared to your previous indication is displayed smaller below.
-    """,
-    delta_color ="inverse"
-)
+#st.metric(
+#    label="Risk of Stroke", 
+#    value=str(round(prediction_proba*100, 1)) + " %", 
+#    delta=str(round(delta(userData(), prediction_proba), 2)) + " percentage points", 
+#    help="""
+#    This is the indication for the risk of stroke, given the patient data.
+#    The change in percentage points compared to your previous indication is displayed smaller below.
+#    """,
+#    delta_color ="inverse"
+#)
 #data_load_state1.text("Prediction done")
