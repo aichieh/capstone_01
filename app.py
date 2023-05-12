@@ -107,15 +107,15 @@ if st.sidebar.button('Submit'):
                 'systolic_bp': systolic_bp,
                 'BMI': BMI,
                 'hypertension': value(yn, hypertension_choice),
-                'take_HTN_medicine': value(yn, take_HTN_medicine),
-                'high_cholesterol': value(yn, high_cholesterol),
-                'take_HCL_medicine': value(yn, take_HCL_medicine),
-                'diabetes': value(yn, diabetes),
-                'stroke': value(yn, stroke),
-                'heart_failure': value(yn, heart_failure),
-                'coronary_heart_disease': value(yn, coronary_heart_disease),
-                'angina': value(yn, angina),
-                'heart_attack': value(yn, heart_attack)}
+                'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
+                'high_cholesterol': value(yn, high_cholesterol_choice),
+                'take_HCL_medicine': value(yn, take_HCL_medicine_choice),
+                'diabetes': value(yn, diabetes_choice),
+                'stroke': value(yn, stroke_choice),
+                'heart_failure': value(yn, heart_failure_choice),
+                'CAD': value(yn, CAD_choice),
+                'angina': value(yn, angina_choice)),
+                'heart_attack': value(yn, heart_attack_choice))}
 #        features = pd.DataFrame(data, index=[0])
 
 #        st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
