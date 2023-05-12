@@ -176,26 +176,4 @@ col2.metric(
     delta_color ="inverse"
 )
 
-def assesBMI(BMI, age):
-    if BMI > 45 and age > 75:
-        inf = """
-        Note: Information is unreliable.
-        BMI > 45 and age > 75.
-        """
-    elif BMI <= 10:
-        inf = "BMI level:\nBMI too low"
-    elif BMI < 18.5 and BMI > 10:
-        inf = "BMI level:\nShortweight"
-    elif BMI >= 18.5 and BMI < 25:
-        inf = "BMI level:\nNormal Weight"
-    elif BMI >= 25 and BMI < 30:
-        inf = "BMI level:\nOverweight"
-    elif BMI >= 30 and BMI < 35:
-        inf = "BMI level:\nModerate Obesity"
-    elif BMI >= 35 and BMI < 40:
-        inf = "BMI level:\nStrong Obesity"
-    elif BMI >= 40:
-        inf = "BMI level:\nExtreme Obesity"
-    return inf
-st.text(assesBMI(bmi, age))
 #data_load_state1.text("Prediction done")
