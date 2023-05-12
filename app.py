@@ -141,7 +141,7 @@ if st.sidebar.button('Submit'):
  
 adjst=5
 st.write("Risk of Stroke") 
-st.write(prediction_proba)
+st.write(prediction_proba[:, 1])
         
         
 #        st.markdown("<h2 style='text-align: center; color:#99ffff;'><u>Prediction </u></h2>", unsafe_allow_html = True)
