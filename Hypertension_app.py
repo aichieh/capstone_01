@@ -109,7 +109,7 @@ prediction = model.predict(features)
 prediction_proba = model.predict_proba(features).reshape(2,)
 st.write("Risk of Hypertension") 
 risk = (prediction_proba[1]*100).round(2) 
-st.write(yes, " %")
+st.write(risk, " %")
 
 #def userData():
 #    return []
