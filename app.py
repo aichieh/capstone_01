@@ -136,12 +136,12 @@ if st.sidebar.button('Submit'):
         # Apply model to make predictions
         prediction = model.predict(features)
         prediction_proba = model.predict_proba(features).reshape(2,)
+        st.write("Risk of Stroke") 
         yes = prediction_proba[1]
-        no = prediction_proba[0]
+        st.write(yes)
+        
  
-adjst=5
-st.write("Risk of Stroke") 
-st.write(yes)
+
         
         
 #        st.markdown("<h2 style='text-align: center; color:#99ffff;'><u>Prediction </u></h2>", unsafe_allow_html = True)
