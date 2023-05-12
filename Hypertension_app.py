@@ -97,6 +97,7 @@ data = {'weight': weight_choice,
 features = pd.DataFrame(data, index=[0])
 st.write(features)
 
+data_load_state1.text("Predicting...")
 # Reads in saved classification model
 model = pickle.load(open('stroke.pkl', 'rb'))
            
@@ -106,7 +107,28 @@ prediction_proba = model.predict_proba(features).reshape(2,)
 st.write("Risk of Stroke") 
 yes = prediction_proba[1]
 st.write(yes)
-        
+
+def userData():
+    return []
+
+@st.cache(allow_output_mutation=True)
+def delta(l, p):
+    if len(l) == 0:
+        l.extend([0, round(p*100, 1)])
+        d = 0
+    else:
+        l.pop(0)
+        l.append(round(p*100, 1))
+        d = l[1] - l[0]
+    return d
+
+col1, col2, col3 = st.columns(3)
+col1.metric(label="Risk of Stroke", 
+            value=str(round(prediction_proba*100, 1)) + " %", 
+            delta=str(round(delta(userData(), prediction_proba), 2)) + " percentage points"),
+            delta_color ="inverse")
+col2.metric("Risk of Diabetes", "", "")
+col3.metric("Risk of Hypertension", "", "")
  
 # Calculating BMI in backend
 #height1 = height/100
