@@ -121,11 +121,11 @@ if st.sidebar.button('Submit'):
 #        st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
 #        st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
         # Reads in saved classification model
-#        load_clf = pickle.load(open('stroke.pkl', 'rb'))
+#        load_model = pickle.load(open('stroke.pkl', 'rb'))
         
         # Apply model to make predictions
-#        prediction = load_clf.predict(features)
-#        prediction_proba = load_clf.predict_proba(features).reshape(2,)
+#        prediction = load_model.predict(features)
+#        prediction_proba = load_model.predict_proba(features).reshape(2,)
 #        yes = prediction_proba[1]
 #        no = prediction_proba[0]
         
