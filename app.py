@@ -22,10 +22,7 @@ st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Ca
 
 # Read the data
 @st.cache
-def get_data():
-        path = r'df_try.csv'
-        return pd.read_csv(path)
-df = get_data()
+df = pd.read_csv("./output/df_try.csv")
 
 # Creating the container for the first plot
 #with st.beta_expander('Stroke Prediction'):
