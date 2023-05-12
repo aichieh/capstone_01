@@ -64,11 +64,24 @@ st.markdown("<h1 style='text-align: center'>Examining Hypertension Using Health 
 
 # Explaination of the features displays along with the graph
 st.markdown('**Explaination of the feature selected:**')
-        
+ 
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
 Input your data here.
 """)
-male = st.sidebar.slider('Sex', ('NO', 'YES'))
+gender = st.sidebar.slider('Sex', ('NO', 'YES'))
 age = st.sidebar.slider('Age', 1, 100, 30)
 weight = st.sidebar.selectbox('Weight (lb)', 10.0, 400.0, 150.0)
 waist_circumference = st.sidebar.selectbox('Waist Circumference (inch)', 10.0, 80.0, 30.0)
