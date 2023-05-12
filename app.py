@@ -22,6 +22,7 @@ st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Ca
 
 # Read the data
 df = pd.read_csv("./output/df_try.csv")
+st.dataframe(df)
 
 st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
@@ -147,3 +148,8 @@ if st.sidebar.button('Submit'):
                 st.image("amb.png")
             with pred3:
                 st.write("")
+  
+# Calculating BMI in backend
+#height1 = height/100
+#bmi = (weight/(height1*height1))
+
