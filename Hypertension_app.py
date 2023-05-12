@@ -123,10 +123,11 @@ def delta(l, p):
     return d
 
 col1, col2, col3 = st.columns(3)
-col1.metric(label="Risk of Stroke", 
-            value=str(round(prediction_proba*100, 1)) + " %", 
-            delta=str(round(delta(userData(), prediction_proba), 2)) + " percentage points"),
-            delta_color ="inverse"
+col1.metric(
+    label="Risk of Stroke", 
+    value=str(round(prediction_proba*100, 1)) + " %", 
+    delta=str(round(delta(userData(), prediction_proba), 2)) + " percentage points"),
+    delta_color ="inverse"
     )
 col2.metric("Risk of Diabetes", "", "")
 col3.metric("Risk of Hypertension", "", "")
