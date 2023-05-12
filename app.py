@@ -37,6 +37,7 @@ weight = df['weight']
 height = df['height']
 waist_circumference = df['waist_circumference']
 systolic_bp = df['systolic_bp']
+heart_rate = df['heart_rate']
 BMI = df['BMI']
 hypertension = df['hypertension']
 take_HTN_medicine = df['take_HTN_medicine']
@@ -54,6 +55,7 @@ weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
 height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
 waist_circumference_choice  = st.sidebar.slider('Waist Circumference (inch)', 10.0, 80.0, 30.0)
 systolic_bp_choice = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
+heart_rate_choice = st.sidebar.slider('Heart Rate (per minute)', 30.0, 150.0, 40.0)
 BMI_choice = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
 hypertension_choice = st.sidebar.selectbox('Have hypertension', ('NO', 'YES'))
 take_HTN_medicine_choice = st.sidebar.selectbox('Takes BP medicines', ('NO', 'YES'))
@@ -107,6 +109,7 @@ if st.sidebar.button('Submit'):
                 'height': height,
                 'waist_circumference': waist_circumference,
                 'systolic_bp': systolic_bp,
+                'heart_rate': heart_rate,
                 'BMI': BMI,
                 'hypertension': value(yn, hypertension_choice),
                 'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
@@ -118,7 +121,9 @@ if st.sidebar.button('Submit'):
                 'CAD': value(yn, CAD_choice),
                 'angina': value(yn, angina_choice),
                 'heart_attack': value(yn, heart_attack_choice)}
-        features = pd.DataFrame(data, index=[0])
+        #features = pd.DataFrame(data, index=[0])
+        features = ['weight','height','BMI','waist_circumference','hypertension','take_HTN_medicine','high_cholesterol','take_HCL_medicine','heart_rate','systolic_bp','gender','age',
+                    'diabetes','heart_failure','CAD','angina','heart_attack','stroke']
 
         st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
         st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
