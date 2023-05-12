@@ -105,9 +105,9 @@ model = pickle.load(open('stroke.pkl', 'rb'))
 # Apply model to make predictions
 prediction = model.predict(features)
 prediction_proba = model.predict_proba(features).reshape(2,)
-st.write("Risk of Stroke") 
+#st.write("Risk of Stroke") 
 yes = (prediction_proba[1]*100).round(2) 
-st.write(yes, " %")
+#st.write(yes, " %")
 
 def userData():
     return []
@@ -128,8 +128,7 @@ st.metric(
     value= str(yes) + " %", 
     delta=str(delta(userData(), yes)) + " percentage points", 
     help="""
-    This is the indication for the risk of stroke, given the patient data.
-    The change in percentage points compared to your previous indication is displayed smaller below.
+    The change in percentage points is displayed below.
     """,
     delta_color ="inverse"
 )
