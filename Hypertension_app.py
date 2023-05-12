@@ -114,7 +114,7 @@ risk = (prediction_proba[1]*100).round(2)
 def userData():
     return []
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
 def delta(l, p):
     if len(l) == 0:
         l.extend([0, round(p*100, 1)])
