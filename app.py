@@ -29,11 +29,12 @@ Input your data here .
 """)
 Sex = df['gender']
 Age = df['age']
-weight = df['weight']
-#components = df['components']
+Weight = df['weight']
+Waist Circumference (inch) = df['waist_circumference']
 Sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
-Age_choice = st.sidebar.slider('Age', 5.0, 100.0, 30.0)
+Age_choice = st.sidebar.slider('Age', 1, 100, 30)
 weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
+waist_circumference_choice  = st.sidebar.selectbox('Waist Circumference (inch)', 10.0, 80.0, 30.0)
 #engine_choice = st.sidebar.selectbox('', engines)
 # Creating the container for the first plot
 #with st.beta_expander('Stroke Prediction'):
