@@ -180,7 +180,7 @@ def delta(l, p):
     return d
 
 st.metric(
-    label="Risk of Stroke", 
+    label="Risk of Hypertension", 
     value= str(yes) + " %", 
     delta=str(delta(userData(), yes)) + " percentage points", 
     help="""
