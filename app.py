@@ -169,3 +169,20 @@ tab1.metric(
 tab1.text("Confidence in the risk assessment:\n" + \
           str(round((1-uncertainty)*100, 1)) + " %."
 )
+
+if predict_button:
+    result = model.predict_proba([[age_m, height_m, weight_m, gender_m,
+                                   chol_m, gluc_m,
+                                   smoke_m, alco_m,
+                                   active_m, bmi_m,
+                                   bpc_m]])
+    #st.write([age_m, height_m, weight_m, gender_m,chol_m, gluc_m,smoke_m, alco_m,active_m, bmi_m,bpc_m])
+    
+    if result[0][0] >= 0.5:
+        risc = 'Negatif Risk'
+    else:
+        risc = 'Pozitif Risk'
+    
+    st.write(risc)
+    st.write('Olasılık:',
+             round(result[0][1]*100, 1), '%')
