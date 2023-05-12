@@ -23,7 +23,7 @@ st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Ca
 # Read the data
 df = pd.read_csv("./output/df_try.csv")
 if st.sidebar.checkbox("Display data", False):
-    st.subheader("Show Mushroom dataset")
+    st.subheader("Show NHANES dataset")
     st.write(df)
 
 st.sidebar.header('User Input Features')
