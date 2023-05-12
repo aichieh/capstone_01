@@ -125,12 +125,13 @@ if st.sidebar.button('Submit'):
         features = ['weight','height','BMI','waist_circumference','hypertension','take_HTN_medicine','high_cholesterol','take_HCL_medicine','heart_rate','systolic_bp','gender','age',
                     'diabetes','heart_failure','CAD','angina','heart_attack','stroke']
         df = df[features]
+        st.write(df)
 
         st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
         st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
         # Reads in saved classification model
         model = pickle.load(open('stroke.pkl', 'rb'))
-        print(df.columns)
+        
     
         
         # Apply model to make predictions
