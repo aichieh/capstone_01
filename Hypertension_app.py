@@ -125,8 +125,8 @@ def delta(l, p):
         d = l[1] - l[0]
     return d
 
-col1 = st.columns(1)
-col1.metric(
+#col1, col2 = st.columns(2)
+st.metric(
     label="Risk of Stroke", 
     value= str(risk) + " %", 
     delta=str(delta(userData(), risk)) + " percentage points", 
