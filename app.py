@@ -87,25 +87,32 @@ heart_attack_choice = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES')
 #heart_rate = st.sidebar.slider('Heart Rate (per minute)', 30.0, 130.0, 40.0)
 #glucose = st.sidebar.slider('Glucose (mg/dl)', 100.0, 500.0, 110.0)
 
+def value(lst, string):
+    for i in range(len(lst)):
+        if lst[i] == string:
+            return i
+sex=['Female', 'Male']
+yn=['NO', 'YES']
+
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'>Update your details in the sidebar</h3>", unsafe_allow_html = True)
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_allow_html = True)
 if st.sidebar.button('Submit'):
         data = {'gender': value(sex, male),
                 'age': age,
-                #'weight': weight,
-                'education': value(edu, education),
-                'currentSmoker': value(yn, current_smoker),
-                'cigsPerDay': cigsPerDay,
-                'BPMeds': value(yn, BPMeds),
-                'prevalentStroke': value(yn, prevstrk),
-                'prevalentHyp': value(yn, prevhyp),
-                'diabetes': value(yn, diabetes),
-                'totChol': chol,
-                'sysBP': highbp,
-                'diaBP': lowbp,
+                'weight': weight,
+                'waist_circumference': waist_circumference,
+                'systolic_bp': systolic_bp,
                 'BMI': BMI,
-                'heartRate': heart_rate,
-                'glucose': glucose}
+                'hypertension': value(yn, hypertension),
+                'take_HTN_medicine': value(yn, hypertension),
+                'high_cholesterol': value(yn, high_cholesterol),
+                'take_HCL_medicine': value(yn, take_HCL_medicine),
+                'diabetes': value(yn, diabetes),
+                'stroke': value(yn, stroke),
+                'heart_failure': value(yn, heart_failure),
+                'coronary_heart_disease': value(yn, coronary_heart_disease),
+                'angina': value(yn, angina),
+                'heart_attack': value(yn, heart_attack)}
         features = pd.DataFrame(data, index=[0])
 
         st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
