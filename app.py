@@ -125,8 +125,8 @@ if st.sidebar.button('Submit'):
         
         # Apply model to make predictions
         target = 'stroke'
-        X = df1.drop([target], axis=1)
-        y = df1[target]
+        X = df.drop([target], axis=1)
+        y = df[target]
         # split
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
         # Fit the model on training set
