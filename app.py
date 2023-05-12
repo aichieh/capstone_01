@@ -29,7 +29,7 @@ df1 = pd.read_csv("./output/df_try.csv")
 # Creating a selectbox dropdown with the categorical features to choose from
 #    cat_option = st.selectbox('Select a feature to examine', cat_cols, key='cat_cols1')
 
-
+st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
 Input your data here .
 """)
