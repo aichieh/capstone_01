@@ -107,7 +107,7 @@ if st.sidebar.button('Submit'):
                 'systolic_bp': systolic_bp,
                 'BMI': BMI,
                 'hypertension': value(yn, hypertension),
-                'take_HTN_medicine': value(yn, hypertension),
+                'take_HTN_medicine': value(yn, take_HTN_medicine),
                 'high_cholesterol': value(yn, high_cholesterol),
                 'take_HCL_medicine': value(yn, take_HCL_medicine),
                 'diabetes': value(yn, diabetes),
