@@ -123,7 +123,8 @@ def delta(l, p):
         d = l[1] - l[0]
     return d
 
-st.metric(
+col1, col2 = st.columns(2)
+col1.metric(
     label="Risk of Stroke", 
     value= str(yes) + " %", 
     delta=str(delta(userData(), yes)) + " percentage points", 
@@ -134,10 +135,10 @@ st.metric(
 )
 
 # Reads in saved classification model
-model = pickle.load(open('htn.pkl', 'rb'))
+model2 = pickle.load(open('htn.pkl', 'rb'))
 
 
-data = {'weight': weight_choice,
+data2 = {'weight': weight_choice,
         'height': height_choice,
         'BMI': BMI_choice,
         'waist_circumference': waist_circumference_choice,
@@ -156,18 +157,18 @@ data = {'weight': weight_choice,
         'heart_attack': value(yn, heart_attack_choice),
         'stroke': value(yn, stroke_choice)
        }
-features = np.array(pd.DataFrame(data, index=[0]))
+features2 = np.array(pd.DataFrame(data, index=[0]))
 
 # Apply model to make predictions
-prediction = model.predict(features)
-prediction_proba = model.predict_proba(features).reshape(2,)
+prediction2 = model.predict(features)
+prediction_proba2 = model.predict_proba(features).reshape(2,)
 #st.write("Risk of Hypertension") 
-yes = (prediction_proba[1]*100).round(2) 
+yes2 = (prediction_proba2[1]*100).round(2) 
 #st.write(yes, " %")
 
-st.metric(
+col2.metric(
     label="Risk of Hypertension", 
-    value= str(yes) + " %", 
+    value= str(yes2) + " %", 
     delta=str(delta(userData(), yes)) + " percentage points", 
     help="""
     The change in percentage points is displayed below.
