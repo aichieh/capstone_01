@@ -125,7 +125,7 @@ def delta(l, p):
         d = l[1] - l[0]
     return d
 
-col1, col2 = st.columns(2)
+col1 = st.columns(1)
 col1.metric(
     label="Risk of Stroke", 
     value= str(risk) + " %", 
@@ -137,45 +137,45 @@ col1.metric(
 )
 
 # Reads in saved classification model
-model2 = pickle.load(open('htn.pkl', 'rb'))
+#model2 = pickle.load(open('htn.pkl', 'rb'))
 
 
-data2 = {'weight': weight_choice,
-        'height': height_choice,
-        'BMI': BMI_choice,
-        'waist_circumference': waist_circumference_choice,
-        #'hypertension': value(yn, hypertension_choice),
-        'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
-        'high_cholesterol': value(yn, high_cholesterol_choice),
-        'take_HCL_medicine': value(yn, take_HCL_medicine_choice),
-        'heart_rate': heart_rate_choice,
-        'systolic_bp': systolic_bp_choice,
-        'gender': value(sex, sex_choice),
-        'age': age_choice,
-        'diabetes': value(yn, diabetes_choice),
-        'heart_failure': value(yn, heart_failure_choice),
-        'CAD': value(yn, CAD_choice),
-        'angina': value(yn, angina_choice),
-        'heart_attack': value(yn, heart_attack_choice),
-        'stroke': value(yn, stroke_choice)
-       }
-features2 = np.array(pd.DataFrame(data2, index=[0]))
+#data2 = {'weight': weight_choice,
+#        'height': height_choice,
+#        'BMI': BMI_choice,
+#        'waist_circumference': waist_circumference_choice,
+#        #'hypertension': value(yn, hypertension_choice),
+#        'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
+#        'high_cholesterol': value(yn, high_cholesterol_choice),
+#        'take_HCL_medicine': value(yn, take_HCL_medicine_choice),
+#        'heart_rate': heart_rate_choice,
+#        'systolic_bp': systolic_bp_choice,
+#        'gender': value(sex, sex_choice),
+#        'age': age_choice,
+#        'diabetes': value(yn, diabetes_choice),
+#        'heart_failure': value(yn, heart_failure_choice),
+#        'CAD': value(yn, CAD_choice),
+#        'angina': value(yn, angina_choice),
+#        'heart_attack': value(yn, heart_attack_choice),
+#        'stroke': value(yn, stroke_choice)
+#       }
+#features2 = np.array(pd.DataFrame(data2, index=[0]))
 
 # Apply model to make predictions
-prediction2 = model2.predict(features2)
-prediction_proba2 = model2.predict_proba(features2).reshape(2,)
+#prediction2 = model2.predict(features2)
+#prediction_proba2 = model2.predict_proba(features2).reshape(2,)
 #st.write("Risk of Hypertension") 
-risk2 = (prediction_proba2[1]*100).round(2) 
+#risk2 = (prediction_proba2[1]*100).round(2) 
 #st.write(risk2, " %")
 
-col2.metric(
-    label="Risk of Hypertension", 
-    value= str(risk2) + " %", 
-    delta=str(delta(userData(), risk2)) + " percentage points", 
-    help="""
-    The change in percentage points is displayed below.
-    """,
-    delta_color ="inverse"
-)
+#col2.metric(
+#    label="Risk of Hypertension", 
+#    value= str(risk2) + " %", 
+#    delta=str(delta(userData(), risk2)) + " percentage points", 
+#    help="""
+#    The change in percentage points is displayed below.
+#    """,
+#    delta_color ="inverse"
+#)
 
 #data_load_state1.text("Prediction done")
