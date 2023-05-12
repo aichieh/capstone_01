@@ -107,7 +107,7 @@ prediction = model.predict(features)
 prediction_proba = model.predict_proba(features)[:, 1]
 st.write("Risk of Stroke") 
 yes = prediction_proba
-#st.write(yes)
+st.write(yes)
 
 def userData():
     return []
