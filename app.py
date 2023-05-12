@@ -128,8 +128,7 @@ if st.sidebar.button('Submit'):
         prediction_proba = load_model.predict_proba(features).reshape(2,)
         yes = prediction_proba[1]
         no = prediction_proba[0]
-        
-        
+         
         
         
 #        st.markdown("<h2 style='text-align: center; color:#99ffff;'><u>Prediction </u></h2>", unsafe_allow_html = True)
