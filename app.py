@@ -103,24 +103,25 @@ yn=['NO', 'YES']
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'>Update your details in the sidebar</h3>", unsafe_allow_html = True)
 st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_allow_html = True)
 if st.sidebar.button('Submit'):
-        data = {'gender': value(sex, sex_choice),
-                'age': age_choice,
-                'weight': weight_choice,
+        data = {'weight': weight_choice,
                 'height': height_choice,
-                'waist_circumference': waist_circumference_choice,
-                'systolic_bp': systolic_bp_choice,
-                'heart_rate': heart_rate_choice,
                 'BMI': BMI_choice,
+                'waist_circumference': waist_circumference_choice,
                 'hypertension': value(yn, hypertension_choice),
                 'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
                 'high_cholesterol': value(yn, high_cholesterol_choice),
                 'take_HCL_medicine': value(yn, take_HCL_medicine_choice),
+                'heart_rate': heart_rate_choice,
+                'systolic_bp': systolic_bp_choice,
+                'gender': value(sex, sex_choice),
+                'age': age_choice,
                 'diabetes': value(yn, diabetes_choice),
-                #'stroke': value(yn, stroke_choice),
                 'heart_failure': value(yn, heart_failure_choice),
                 'CAD': value(yn, CAD_choice),
                 'angina': value(yn, angina_choice),
-                'heart_attack': value(yn, heart_attack_choice)}
+                'heart_attack': value(yn, heart_attack_choice)
+               #'stroke': value(yn, stroke_choice)
+               }
         features = pd.DataFrame(data, index=[0])
         #features = ['weight','height','BMI','waist_circumference','hypertension','take_HTN_medicine','high_cholesterol','take_HCL_medicine','heart_rate','systolic_bp','gender','age',
        #             'diabetes','heart_failure','CAD','angina','heart_attack','stroke']
