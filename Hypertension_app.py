@@ -76,6 +76,8 @@ def value(lst, string):
 sex=['Female', 'Male']
 yn=['NO', 'YES']
 
+tab1, tab2 = st.tabs(["Stroke Risk", "Hypertension Risk"])
+
 data = {'weight': weight_choice,
         'height': height_choice,
         'BMI': BMI_choice,
@@ -123,8 +125,8 @@ def delta(l, p):
         d = l[1] - l[0]
     return d
 
-col1, col2 = st.columns(2)
-col1.metric(
+#col1, col2 = st.columns(2)
+tab1.metric(
     label="Risk of Stroke", 
     value= str(risk) + " %", 
     delta=str(delta(userData(), risk)) + " percentage points", 
@@ -166,7 +168,7 @@ prediction_proba2 = model2.predict_proba(features2).reshape(2,)
 risk2 = (prediction_proba2[1]*100).round(2) 
 #st.write(risk2, " %")
 
-col2.metric(
+tab2.metric(
     label="Risk of Hypertension", 
     value= str(risk2) + " %", 
     delta=str(delta(userData(), risk2)) + " percentage points", 
