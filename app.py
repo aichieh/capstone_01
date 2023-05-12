@@ -123,6 +123,7 @@ if st.sidebar.button('Submit'):
         st.markdown("<h2 style='text-align: center; color:#000066;'>Processing Results........</h2>", unsafe_allow_html = True)
         # Reads in saved classification model
         model = pickle.load(open('stroke.pkl', 'rb'))
+        model
         
         # Apply model to make predictions
         #target = 'stroke'
