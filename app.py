@@ -21,7 +21,11 @@ st.set_page_config(page_title='Examining Hypertension Using Health Care Data', p
 st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
 
 # Read the data
-df1 = pd.read_csv("./output/df_try.csv")
+@st.cache
+def get_data():
+path = r'df_try.csv'
+return pd.read_csv(path)
+df = get_data()
 
 # Creating the container for the first plot
 #with st.beta_expander('Stroke Prediction'):
