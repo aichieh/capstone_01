@@ -23,8 +23,8 @@ st.markdown("<h1 style='text-align: center'>Examining Depression Using Health Ca
 # Read the data
 @st.cache
 def get_data():
-path = r'df_try.csv'
-return pd.read_csv(path)
+        path = r'df_try.csv'
+        return pd.read_csv(path)
 df = get_data()
 
 # Creating the container for the first plot
