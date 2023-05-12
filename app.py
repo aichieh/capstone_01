@@ -30,11 +30,13 @@ Input your data here .
 Sex = df['gender']
 Age = df['age']
 Weight = df['weight']
-Waist = df['waist_circumference']
+#Waist = df['waist_circumference']
+systolic_bp = df['systolic_bp']
 Sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
 Age_choice = st.sidebar.slider('Age', 1, 100, 30)
 Weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
-Waist_choice  = st.sidebar.selectbox('Waist', 10.0, 80.0, 30.0)
+systolic_bp_choice = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
+#Waist_choice  = st.sidebar.selectbox('Waist', 10.0, 80.0, 30.0)
 #engine_choice = st.sidebar.selectbox('', engines)
 # Creating the container for the first plot
 #with st.beta_expander('Stroke Prediction'):
