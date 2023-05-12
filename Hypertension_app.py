@@ -129,7 +129,7 @@ def delta(l, p):
 st.metric(
     label="Risk of Stroke", 
     value= str(risk) + " %", 
-    delta=str(delta(userData(), risk), 2) + " percentage points", 
+    delta=str(delta(userData(), risk)) + " percentage points", 
     help="""
     The change in percentage points is displayed below.
     """,
