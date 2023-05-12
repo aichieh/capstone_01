@@ -35,6 +35,7 @@ Input your data here .
 """)
 gender = st.sidebar.selectbox('Sex', ('Female', 'Male'))
 age= st.sidebar.slider('Age', 5.0, 100.0, 30.0)
+weight = st.sidebar.selectbox('Weight (lb)', 10.0, 400.0, 150.0)
 #education = st.sidebar.selectbox('Education', ('10th pass', '12th pass/Diploma', 'Bachelors', 'Masters or Higher'))
 #current_smoker = st.sidebar.selectbox('Current Smoker', ('NO', 'YES'))
 #cigsPerDay = st.sidebar.slider('Cigarettes per Day', 0, 100, 20)
@@ -54,6 +55,7 @@ st.markdown("<h3 style='text-align: center; color:#4dffa6;'><----</h3>", unsafe_
 if st.sidebar.button('Submit'):
         data = {'gender': value(sex, male),
                 'age': age,
+                'weight': weight,
                 'education': value(edu, education),
                 'currentSmoker': value(yn, current_smoker),
                 'cigsPerDay': cigsPerDay,
