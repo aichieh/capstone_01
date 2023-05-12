@@ -30,12 +30,12 @@ st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
 Input your data here .
 """)
-Sex = df['gender']
-Age = df['age']
-Weight = df['weight']
-Height = df['height']
-Waist = df['waist_circumference']
-Systolic_bp = df['systolic_bp']
+sex = df['gender']
+age = df['age']
+weight = df['weight']
+height = df['height']
+waist = df['waist_circumference']
+systolic_bp = df['systolic_bp']
 BMI = df['BMI']
 hypertension = df['hypertension']
 take_HTN_medicine = df['take_HTN_medicine']
@@ -47,12 +47,12 @@ heart_failure = df['heart_failure']
 CAD = df['coronary_heart_disease']
 angina = df['angina']
 heart_attack = df['heart_attack']
-Sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
-Age_choice = st.sidebar.slider('Age', 1, 100, 30)
-Weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
-Height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
-Waist_choice  = st.sidebar.slider('Waist Circumference (inch)', 10.0, 80.0, 30.0)
-Systolic_bp_choice = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
+sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
+age_choice = st.sidebar.slider('Age', 1, 100, 30)
+weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
+height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
+waist_choice  = st.sidebar.slider('Waist Circumference (inch)', 10.0, 80.0, 30.0)
+systolic_bp_choice = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
 BMI_choice = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
 hypertension_choice = st.sidebar.selectbox('Have hypertension', ('NO', 'YES'))
 take_HTN_medicine_choice = st.sidebar.selectbox('Takes BP medicines', ('NO', 'YES'))
