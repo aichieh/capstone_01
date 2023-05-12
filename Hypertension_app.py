@@ -106,7 +106,7 @@ model = pickle.load(open('stroke.pkl', 'rb'))
 prediction = model.predict(features)
 prediction_proba = model.predict_proba(features).reshape(2,)
 #st.write("Risk of Hypertension") 
-yes = (prediction_proba[1]*100).round(2) 
+risk = (prediction_proba[1]*100).round(2) 
 #st.write(yes, " %")
 
 def userData():
@@ -126,8 +126,8 @@ def delta(l, p):
 col1, col2 = st.columns(2)
 col1.metric(
     label="Risk of Stroke", 
-    value= str(yes) + " %", 
-    delta=str(delta(userData(), yes)) + " percentage points", 
+    value= str(risk) + " %", 
+    delta=str(delta(userData(), risk)) + " percentage points", 
     help="""
     The change in percentage points is displayed below.
     """,
@@ -157,19 +157,19 @@ data2 = {'weight': weight_choice,
         'heart_attack': value(yn, heart_attack_choice),
         'stroke': value(yn, stroke_choice)
        }
-features2 = np.array(pd.DataFrame(data, index=[0]))
+features2 = np.array(pd.DataFrame(data2, index=[0]))
 
 # Apply model to make predictions
-prediction2 = model.predict(features)
-prediction_proba2 = model.predict_proba(features).reshape(2,)
+prediction2 = model2.predict(features2)
+prediction_proba2 = model2.predict_proba(features2).reshape(2,)
 #st.write("Risk of Hypertension") 
-yes2 = (prediction_proba2[1]*100).round(2) 
-#st.write(yes, " %")
+risk2 = (prediction_proba2[1]*100).round(2) 
+#st.write(risk2, " %")
 
 col2.metric(
     label="Risk of Hypertension", 
-    value= str(yes2) + " %", 
-    delta=str(delta(userData(), yes)) + " percentage points", 
+    value= str(risk2) + " %", 
+    delta=str(delta(userData(), risk2)) + " percentage points", 
     help="""
     The change in percentage points is displayed below.
     """,
