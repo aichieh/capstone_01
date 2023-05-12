@@ -5,7 +5,7 @@ import plotly.express as px
 import plotly.io as pio
 #from PIL import Image
 import matplotlib.pyplot as plt
-#import pickle 
+import pickle 
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
