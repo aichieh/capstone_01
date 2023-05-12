@@ -115,7 +115,7 @@ if st.sidebar.button('Submit'):
                 'heart_failure': value(yn, heart_failure_choice),
                 'CAD': value(yn, CAD_choice),
                 'angina': value(yn, angina_choice),
-                'heart_attack': value(yn, heart_attack_choice))}
+                'heart_attack': value(yn, heart_attack_choice)}
 #        features = pd.DataFrame(data, index=[0])
 
 #        st.markdown("<h2 style='text-align: center; color:#000066;'>Data gathered........</h2>", unsafe_allow_html = True)
