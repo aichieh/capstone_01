@@ -105,7 +105,7 @@ model = pickle.load(open('stroke.pkl', 'rb'))
 # Apply model to make predictions
 prediction = model.predict(features)
 prediction_proba = model.predict_proba(features).reshape(2,)
-#st.write("Risk of Stroke") 
+#st.write("Risk of Hypertension") 
 yes = (prediction_proba[1]*100).round(2) 
 #st.write(yes, " %")
 
@@ -135,11 +135,33 @@ st.metric(
 
 # Reads in saved classification model
 model = pickle.load(open('htn.pkl', 'rb'))
-model           
+
+
+data = {'weight': weight_choice,
+        'height': height_choice,
+        'BMI': BMI_choice,
+        'waist_circumference': waist_circumference_choice,
+        #'hypertension': value(yn, hypertension_choice),
+        'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
+        'high_cholesterol': value(yn, high_cholesterol_choice),
+        'take_HCL_medicine': value(yn, take_HCL_medicine_choice),
+        'heart_rate': heart_rate_choice,
+        'systolic_bp': systolic_bp_choice,
+        'gender': value(sex, sex_choice),
+        'age': age_choice,
+        'diabetes': value(yn, diabetes_choice),
+        'heart_failure': value(yn, heart_failure_choice),
+        'CAD': value(yn, CAD_choice),
+        'angina': value(yn, angina_choice),
+        'heart_attack': value(yn, heart_attack_choice),
+        'stroke': value(yn, stroke_choice)
+       }
+features = np.array(pd.DataFrame(data, index=[0]))
+
 # Apply model to make predictions
 prediction = model.predict(features)
 prediction_proba = model.predict_proba(features).reshape(2,)
-#st.write("Risk of Stroke") 
+#st.write("Risk of Hypertension") 
 yes = (prediction_proba[1]*100).round(2) 
 #st.write(yes, " %")
 
