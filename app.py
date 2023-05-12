@@ -29,7 +29,6 @@ Input your data here .
 """)
 Sex = df['gender']
 Age = df['age']
-models = df['model']
 weight = df['weight']
 #components = df['components']
 Sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
