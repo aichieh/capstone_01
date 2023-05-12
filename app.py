@@ -138,21 +138,11 @@ if st.sidebar.button('Submit'):
         prediction_proba = model.predict_proba(features).reshape(2,)
         yes = prediction_proba[1]
         no = prediction_proba[0]
-         
-tab1.metric(
-    label="Risk of Stroke", 
-    value=str(round(pred*100/adjst, 1)) + " %", 
-    delta=str(round(delta(userData(), pred)/adjst, 2)) + " percentage points", 
-    help="""
-    This is the indication for the risk of stroke, given the patient data.
-    The change in percentage points compared to your previous indication is displayed smaller below.
-    """,
-    delta_color ="inverse"
-)
+ 
+adjst=5
+st.write("Risk of Stroke") 
+st.write(str(round(prediction*100/adjst, 1)) + " %") 
 
-tab1.text("Confidence in the risk assessment:\n" + \
-          str(round((1-uncertainty)*100, 1)) + " %."
-)
         
         
 #        st.markdown("<h2 style='text-align: center; color:#99ffff;'><u>Prediction </u></h2>", unsafe_allow_html = True)
