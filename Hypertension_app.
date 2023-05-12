@@ -95,7 +95,7 @@ data = {'weight': weight_choice,
         'heart_attack': value(yn, heart_attack_choice)
        #'stroke': value(yn, stroke_choice)
        }
-features = pd.DataFrame(data, index=[0])
+features = np.array(pd.DataFrame(data, index=[0]))
 st.write(features)
 
 #data_load_state1.text("Predicting...")
