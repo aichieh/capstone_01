@@ -114,7 +114,7 @@ if st.sidebar.button('Submit'):
                 'stroke': value(yn, stroke_choice),
                 'heart_failure': value(yn, heart_failure_choice),
                 'CAD': value(yn, CAD_choice),
-                'angina': value(yn, angina_choice)),
+                'angina': value(yn, angina_choice),
                 'heart_attack': value(yn, heart_attack_choice))}
 #        features = pd.DataFrame(data, index=[0])
 
