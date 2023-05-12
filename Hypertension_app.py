@@ -68,7 +68,7 @@ st.markdown('**Explaination of the feature selected:**')
 st.sidebar.markdown("""
 Input your data here.
 """)
-gender = st.sidebar.slider('Sex', ('NO', 'YES'))
+male = st.sidebar.slider('Sex', ('NO', 'YES'))
 age = st.sidebar.slider('Age', 1, 100, 30)
 weight = st.sidebar.selectbox('Weight (lb)', 10.0, 400.0, 150.0)
 waist_circumference = st.sidebar.selectbox('Waist Circumference (inch)', 10.0, 80.0, 30.0)
