@@ -96,7 +96,7 @@ data = {'weight': weight_choice,
        #'stroke': value(yn, stroke_choice)
        }
 features = np.array(pd.DataFrame(data, index=[0]))
-st.write(features)
+#st.write(features)
 
 #data_load_state1.text("Predicting...")
 # Reads in saved classification model
