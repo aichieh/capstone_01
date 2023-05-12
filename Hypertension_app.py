@@ -132,4 +132,38 @@ st.metric(
     """,
     delta_color ="inverse"
 )
+
+# Reads in saved classification model
+model = pickle.load(open('htn.pkl', 'rb'))
+model           
+# Apply model to make predictions
+prediction = model.predict(features)
+prediction_proba = model.predict_proba(features).reshape(2,)
+#st.write("Risk of Stroke") 
+yes = (prediction_proba[1]*100).round(2) 
+#st.write(yes, " %")
+
+def userData():
+    return []
+
+@st.cache(allow_output_mutation=True)
+def delta(l, p):
+    if len(l) == 0:
+        l.extend([0, round(p*100, 1)])
+        d = 0
+    else:
+        l.pop(0)
+        l.append(round(p*100, 1))
+        d = l[1] - l[0]
+    return d
+
+st.metric(
+    label="Risk of Stroke", 
+    value= str(yes) + " %", 
+    delta=str(delta(userData(), yes)) + " percentage points", 
+    help="""
+    The change in percentage points is displayed below.
+    """,
+    delta_color ="inverse"
+)
 #data_load_state1.text("Prediction done")
