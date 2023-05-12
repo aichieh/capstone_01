@@ -33,7 +33,7 @@ st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
 Input your data here .
 """)
-male = st.sidebar.selectbox('Sex', ('Female', 'Male'))
+gender = st.sidebar.selectbox('Sex', ('Female', 'Male'))
 age= st.sidebar.slider('Age', 5.0, 100.0, 30.0)
 #education = st.sidebar.selectbox('Education', ('10th pass', '12th pass/Diploma', 'Bachelors', 'Masters or Higher'))
 #current_smoker = st.sidebar.selectbox('Current Smoker', ('NO', 'YES'))
