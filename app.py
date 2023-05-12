@@ -137,7 +137,6 @@ if st.sidebar.button('Submit'):
         prediction = model.predict(features)
         prediction_proba = model.predict_proba(features).reshape(2,)
         yes = prediction_proba[1]
-        st.write(yes)
         no = prediction_proba[0]
  
 adjst=5
