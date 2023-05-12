@@ -139,26 +139,40 @@ if st.sidebar.button('Submit'):
         yes = prediction_proba[1]
         no = prediction_proba[0]
          
+tab1.metric(
+    label="Risk of Stroke", 
+    value=str(round(pred*100/adjst, 1)) + " %", 
+    delta=str(round(delta(userData(), pred)/adjst, 2)) + " percentage points", 
+    help="""
+    This is the indication for the risk of stroke, given the patient data.
+    The change in percentage points compared to your previous indication is displayed smaller below.
+    """,
+    delta_color ="inverse"
+)
+
+tab1.text("Confidence in the risk assessment:\n" + \
+          str(round((1-uncertainty)*100, 1)) + " %."
+)
         
         
-        st.markdown("<h2 style='text-align: center; color:#99ffff;'><u>Prediction </u></h2>", unsafe_allow_html = True)
-        pred1, pred2, pred3 = st.beta_columns([12, 6, 14])
-        if prediction==0:
-            st.markdown("<h1 style='text-align: center; color:#006600;'>You don't have any heart problem.</h1>", unsafe_allow_html = True)
-            with pred1:
-                st.write("")
-            with pred2:
-                st.image("smile_emo.png")
-            with pred3:
-                st.write("")
-        else:
-            st.markdown("<h1 style='text-align: center; color:#cc0000;'>Go to a doctor.You may have heart problems.</h1>", unsafe_allow_html = True)
-            with pred1:
-                st.write("")
-            with pred2:
-                st.image("amb.png")
-            with pred3:
-                st.write("")
+#        st.markdown("<h2 style='text-align: center; color:#99ffff;'><u>Prediction </u></h2>", unsafe_allow_html = True)
+#        pred1, pred2, pred3 = st.beta_columns([12, 6, 14])
+#        if prediction==0:
+#            st.markdown("<h1 style='text-align: center; color:#006600;'>You don't have any heart problem.</h1>", unsafe_allow_html = True)
+#            with pred1:
+#                st.write("")
+#            with pred2:
+#                st.image("smile_emo.png")
+#            with pred3:
+#                st.write("")
+#        else:
+#            st.markdown("<h1 style='text-align: center; color:#cc0000;'>Go to a doctor.You may have heart problems.</h1>", unsafe_allow_html = True)
+#            with pred1:
+#                st.write("")
+#            with pred2:
+#                st.image("amb.png")
+#            with pred3:
+#                st.write("")
   
 # Calculating BMI in backend
 #height1 = height/100
