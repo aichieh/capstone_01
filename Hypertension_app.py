@@ -63,19 +63,7 @@ st.markdown("<h1 style='text-align: center'>Examining Hypertension Using Health 
 #result['AUC'] = [round(roc_auc_score(y_test, lg_probs),2)]
 
 # Explaination of the features displays along with the graph
-st.markdown('**Explaination of the feature selected:**')
- 
-st.markdown(
-    f"""
-    <style>
-    .reportview-container {{
-        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
+#st.markdown('**Explaination of the feature selected:**')
 
 st.sidebar.header('User Input Features')
 st.sidebar.markdown("""
