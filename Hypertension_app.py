@@ -97,7 +97,7 @@ data = {'weight': weight_choice,
 features = pd.DataFrame(data, index=[0])
 st.write(features)
 
-data_load_state1.text("Predicting...")
+#data_load_state1.text("Predicting...")
 # Reads in saved classification model
 model = pickle.load(open('stroke.pkl', 'rb'))
            
@@ -132,4 +132,4 @@ st.metric(
     """,
     delta_color ="inverse"
 )
-data_load_state1.text("Prediction done")
+#data_load_state1.text("Prediction done")
