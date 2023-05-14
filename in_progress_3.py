@@ -143,7 +143,55 @@ if st.sidebar.button('Submit'):
                 st.image("amb.png")
             with pred3:
                 st.write("")
+###-------------------------------------------------------------------------------------------------------------------------------------------------------------------####
+# BMI Meter
+def calculate_bmi(weight, height):
+    weight_kg = weight*2.205
+    height_m = (height*2.54)/100
+    bmi = weight_kg / (height_m ** 2)
+    return bmi
 
+st.title("BMI Meter")
+weight = st.number_input("Enter your weight:", min_value=0.0)
+height = st.number_input("Enter your height:", min_value=0.0)
+if weight > 0 and height > 0:
+    bmi = calculate_bmi(weight, height)
+    st.write("Your BMI:", bmi)
+
+# Hypertension Stage Meter
+def get_hypertension_stage(systolic, diastolic):
+    if systolic >= 180 or diastolic >= 120:
+        return "Hypertensive Crisis"
+    elif systolic >= 140 or diastolic >= 90:
+        return "Stage 2 Hypertension"
+    elif systolic >= 130 or diastolic >= 80:
+        return "Stage 1 Hypertension"
+    elif systolic >= 120 and diastolic < 80:
+        return "Elevated"
+    else:
+        return "Normal"
+
+st.title("Hypertension Stage Meter")
+systolic = st.number_input("Enter your systolic blood pressure:", min_value=0)
+diastolic = st.number_input("Enter your diastolic blood pressure:", min_value=0)
+if systolic > 0 and diastolic > 0:
+    stage = get_hypertension_stage(systolic, diastolic)
+    st.write("Your Hypertension Stage:", stage)
+
+# Diabetes Stage Meter
+def get_diabetes_stage(fasting_glucose):
+    if fasting_glucose >= 126:
+        return "Diabetes"
+    elif fasting_glucose >= 100:
+        return "Prediabetes"
+    else:
+        return "Normal"
+
+st.title("Diabetes Stage Meter")
+fasting_glucose = st.number_input("Enter your fasting glucose level:", min_value=0)
+if fasting_glucose > 0:
+    stage = get_diabetes_stage(fasting_glucose)
+    st.write("Your Diabetes Stage:", stage)
         st.markdown("<h1 style='text-align: center; color:#99ffff;'><u>Prediction Probability</u></h1>", unsafe_allow_html = True)
         fig,ax=plt.subplots(figsize=(10,8))
         axes=plt.bar(['Chances of being healthy\n{} %'.format(no*100),'Chances of getting cardiac diseases\n{} %'.format(yes*100)], [no, yes])
@@ -151,6 +199,3 @@ if st.sidebar.button('Submit'):
         axes[1].set_color('r')
         st.pyplot(fig)
         
-# Calculating BMI in backend
-#height1 = height/100
-#bmi = (weight/(height1*height1))
