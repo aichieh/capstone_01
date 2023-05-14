@@ -192,10 +192,10 @@ fasting_glucose = st.number_input("Enter your fasting glucose level:", min_value
 if fasting_glucose > 0:
     stage = get_diabetes_stage(fasting_glucose)
     st.write("Your Diabetes Stage:", stage)
-        st.markdown("<h1 style='text-align: center; color:#99ffff;'><u>Prediction Probability</u></h1>", unsafe_allow_html = True)
-        fig,ax=plt.subplots(figsize=(10,8))
-        axes=plt.bar(['Chances of being healthy\n{} %'.format(no*100),'Chances of getting cardiac diseases\n{} %'.format(yes*100)], [no, yes])
-        axes[0].set_color('g')
-        axes[1].set_color('r')
-        st.pyplot(fig)
+    st.markdown("<h1 style='text-align: center; color:#99ffff;'><u>Prediction Probability</u></h1>", unsafe_allow_html = True)
+    fig,ax=plt.subplots(figsize=(10,8))
+    axes=plt.bar(['Chances of being healthy\n{} %'.format(no*100),'Chances of getting cardiac diseases\n{} %'.format(yes*100)], [no, yes])
+    axes[0].set_color('g')
+    axes[1].set_color('r')
+    st.pyplot(fig)
         
