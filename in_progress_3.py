@@ -243,27 +243,6 @@ html_temp = """
     <h1 style ="color:black;text-align:center;">Healthy Heart App</h1> 
     </div> 
     """
-      
-# display the front end aspect
-st.markdown(html_temp, unsafe_allow_html = True) 
-st.subheader('by Amlan Mohanty ')
-      
-# following lines create boxes in which user can enter data required to make prediction
-age=st.selectbox ("Age",range(1,121,1))
-sex = st.radio("Select Gender: ", ('male', 'female'))
-cp = st.selectbox('Chest Pain Type',("Typical angina","Atypical angina","Non-anginal pain","Asymptomatic")) 
-trestbps=st.selectbox('Resting Blood Sugar',range(1,500,1))
-restecg=st.selectbox('Resting Electrocardiographic Results',("Nothing to note","ST-T Wave abnormality","Possible or definite left ventricular hypertrophy"))
-chol=st.selectbox('Serum Cholestoral in mg/dl',range(1,1000,1))
-fbs=st.radio("Fasting Blood Sugar higher than 120 mg/dl", ['Yes','No'])
-thalach=st.selectbox('Maximum Heart Rate Achieved',range(1,300,1))
-exang=st.selectbox('Exercise Induced Angina',["Yes","No"])
-oldpeak=st.number_input('Oldpeak')
-slope = st.selectbox('Heart Rate Slope',("Upsloping: better heart rate with excercise(uncommon)","Flatsloping: minimal change(typical healthy heart)","Downsloping: signs of unhealthy heart"))
-ca=st.selectbox('Number of Major Vessels Colored by Flourosopy',range(0,5,1))
-thal=st.selectbox('Thalium Stress Result',range(1,8,1))
-
-
 
 #user_input=preprocess(sex,cp,exang, fbs, slope, thal )
 pred=preprocess(age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal)
