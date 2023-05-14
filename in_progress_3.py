@@ -164,17 +164,7 @@ systolic = st.number_input("Enter your systolic blood pressure:", min_value=0)
 diastolic = st.number_input("Enter your diastolic blood pressure:", min_value=0)
 if systolic > 0 and diastolic > 0:
     stage = get_hypertension_stage(systolic, diastolic)
-    st.write("Your Hypertension Stage:", stage)
-
-# Diabetes Stage Meter
-def get_diabetes_stage(fasting_glucose):
-    if fasting_glucose >= 126:
-        return "Diabetes"
-    elif fasting_glucose >= 100:
-        return "Prediabetes"
-    else:
-        return "Normal"
-       
+    st.write("Your Hypertension Stage:", stage)       
 
 def preprocess(age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal ):   
  
