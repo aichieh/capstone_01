@@ -35,38 +35,38 @@ sex = df['gender']
 age = df['age']
 weight = df['weight']
 height = df['height']
-waist_circumference = df['waist_circumference']
+#waist_circumference = df['waist_circumference']
 systolic_bp = df['systolic_bp']
-heart_rate = df['heart_rate']
-BMI = df['BMI']
-hypertension = df['hypertension']
+#heart_rate = df['heart_rate']
+#BMI = df['BMI']
+#hypertension = df['hypertension']
 take_HTN_medicine = df['take_HTN_medicine']
 high_cholesterol = df['high_cholesterol']
 take_HCL_medicine = df['take_HCL_medicine']
 diabetes = df['diabetes']
 #stroke = df['stroke']
-heart_failure = df['heart_failure']
-CAD = df['CAD']
-angina = df['angina']
-heart_attack = df['heart_attack']
+#heart_failure = df['heart_failure']
+#CAD = df['CAD']
+#angina = df['angina']
+#heart_attack = df['heart_attack']
 sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
 age_choice = st.sidebar.slider('Age', 1, 100, 30)
 weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
 height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
-waist_circumference_choice  = st.sidebar.slider('Waist Circumference (inch)', 10.0, 80.0, 30.0)
+#waist_circumference_choice  = st.sidebar.slider('Waist Circumference (inch)', 10.0, 80.0, 30.0)
 systolic_bp_choice = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
-heart_rate_choice = st.sidebar.slider('Heart Rate (per minute)', 30.0, 150.0, 40.0)
-BMI_choice = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
-hypertension_choice = st.sidebar.selectbox('Have hypertension', ('NO', 'YES'))
+#heart_rate_choice = st.sidebar.slider('Heart Rate (per minute)', 30.0, 150.0, 40.0)
+#BMI_choice = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
+#hypertension_choice = st.sidebar.selectbox('Have hypertension', ('NO', 'YES'))
 take_HTN_medicine_choice = st.sidebar.selectbox('Takes BP medicines', ('NO', 'YES'))
 high_cholesterol_choice = st.sidebar.selectbox('Have high cholesterol', ('NO', 'YES'))
 take_HCL_medicine_choice = st.sidebar.selectbox('Takes cholesterol medicines', ('NO', 'YES'))
 diabetes_choice = st.sidebar.selectbox('Have diabetes', ('NO', 'YES'))
 #stroke_choice = st.sidebar.selectbox('Had any prevalent Stroke', ('NO', 'YES'))
-heart_failure_choice = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
-CAD_choice = st.sidebar.selectbox('Had any coronary heart disease', ('NO', 'YES'))
-angina_choice = st.sidebar.selectbox('Had any angina', ('NO', 'YES'))
-heart_attack_choice = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES'))
+#heart_failure_choice = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
+#CAD_choice = st.sidebar.selectbox('Had any coronary heart disease', ('NO', 'YES'))
+#angina_choice = st.sidebar.selectbox('Had any angina', ('NO', 'YES'))
+#heart_attack_choice = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES'))
 
 #engine_choice = st.sidebar.selectbox('', engines)
 # Creating the container for the first plot
@@ -87,22 +87,22 @@ tab1, tab2 = st.tabs(["Basic Health Information", "Chronic Disease Risk"])
 if st.sidebar.button('Submit'):
         data = {'weight': weight_choice,
                 'height': height_choice,
-                'BMI': BMI_choice,
-                'waist_circumference': waist_circumference_choice,
-                'hypertension': value(yn, hypertension_choice),
+#                'BMI': BMI_choice,
+#                'waist_circumference': waist_circumference_choice,
+#                'hypertension': value(yn, hypertension_choice),
                 'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
                 'high_cholesterol': value(yn, high_cholesterol_choice),
                 'take_HCL_medicine': value(yn, take_HCL_medicine_choice),
-                'heart_rate': heart_rate_choice,
+#                'heart_rate': heart_rate_choice,
                 'systolic_bp': systolic_bp_choice,
                 'gender': value(sex, sex_choice),
                 'age': age_choice,
                 'diabetes': value(yn, diabetes_choice),
-                'heart_failure': value(yn, heart_failure_choice),
-                'CAD': value(yn, CAD_choice),
-                'angina': value(yn, angina_choice),
-                'heart_attack': value(yn, heart_attack_choice),
-                #'stroke': value(yn, stroke_choice)
+#                'heart_failure': value(yn, heart_failure_choice),
+#                'CAD': value(yn, CAD_choice),
+#                'angina': value(yn, angina_choice),
+#                'heart_attack': value(yn, heart_attack_choice),
+#                'stroke': value(yn, stroke_choice)
                }
         features = pd.DataFrame(data, index=[0])
         #features = ['weight','height','BMI','waist_circumference','hypertension','take_HTN_medicine','high_cholesterol','take_HCL_medicine','heart_rate','systolic_bp','gender','age',
