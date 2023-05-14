@@ -198,10 +198,7 @@ if fasting_glucose > 0:
     axes[0].set_color('g')
     axes[1].set_color('r')
     st.pyplot(fig)
-        
-st.set_page_config(page_title="Healthy Heart App",page_icon="⚕️",layout="centered",initial_sidebar_state="expanded")
-
-
+       
 
 def preprocess(age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal ):   
  
