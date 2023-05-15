@@ -49,6 +49,6 @@ st.title("BMI Indicator Gauges")
     # Generate a grid of BMI gauges
 
     # Update layout and display the plot
-    fig.update_layout(height=600, width=800, title="BMI Indicators")
-    fig.show()
+    #fig.update_layout(height=600, width=800, title="BMI Indicators")
+    #fig.show()
 
