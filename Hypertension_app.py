@@ -162,6 +162,7 @@ def assesBMI(BMI, AGE):
     return inf
 
 st.text(assesBMI(BMI_choice, age_choice))
+
 # BMI Meter
 #@st.cache(allow_output_mutation=True)
 #st.title("BMI Meter")
