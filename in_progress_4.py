@@ -269,7 +269,8 @@ diastolic = st.number_input("Enter your Diastolic Blood Pressure(lower value) (m
 if st.button("check it out"):
     st.title("Blood Pressure Gauges")
     st.subheader("Systolic Blood Pressure")
-    plot_systolic_gauge(systolic_bp)
-    
+    #plot_systolic_gauge(systolic_bp)
+    create_bmi_gauge(systolic_bp)
     st.subheader("Diastolic Blood Pressure")
-    plot_diastolic_gauge(diastolic_bp)
+    #plot_diastolic_gauge(diastolic_bp)
+    create_bmi_gauge(diastolic_bp)
