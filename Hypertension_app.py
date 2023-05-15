@@ -34,8 +34,8 @@ Input your data here .
 """)
 sex = df['gender']
 age = df['age']
-weight 
-height 
+#weight = df['weight']
+#height = df['height']
 BMI = df['BMI']
 #waist_circumference = df['waist_circumference']
 systolic_bp = df['systolic_bp']
