@@ -153,20 +153,24 @@ if systolic > 0 and diastolic > 0:
  
 # BMI Meter
 st.title("BMI Meter")
-weight = st.sidebar.button('Submit')
-def preprocess_BMI(weight, height):
+def calculate_bmi(weight, height):
     weight_kg = weight*2.205
     height_m = (height*2.54)/100
     bmi = weight_kg / (height_m ** 2)
-    # Pre-processing user input 
+    return bmi
+
+check = st.sidebar.button('Submit')
+if(check):
+    bmi = calculate_bmi(weight, height) 
+    st.title(f'Your BMI : {bmi}')
     if bmi <18.5:
-        st.write("You are Underweight")
+        st.title("You are Underweight")
     elif bmi>= 18.5 and bmi<25:
-        st.write("You are Normal")
+        st.title("You are Normal")
     elif bmi >=25 and bmi<30:
-        st.write("You are Overweight")
+        st.title("You are Overweight")
     else:
-        st.write("You are Obese")
+        st.title("You are Obese")
   
 
 st.title("BMI Meter")
@@ -177,29 +181,11 @@ if weight > 0 and height > 0:
     st.write("Your BMI:", bmi) 
     
  
-    user_input=[age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal]
-    user_input=np.array(user_input)
-    user_input=user_input.reshape(1,-1)
-    user_input=scal.fit_transform(user_input)
-    prediction = model.predict(user_input)
 
-    return prediction
 
     
 
        
-    # front end elements of the web page 
-html_temp = """ 
-    <div style ="background-color:pink;padding:13px"> 
-    <h1 style ="color:black;text-align:center;">Healthy Heart App</h1> 
-    </div> 
-    """
-
-#user_input=preprocess(sex,cp,exang, fbs, slope, thal )
-pred=preprocess(age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal)
-
-
-
 
 if st.button("Predict"):    
   if pred[0] == 0:
