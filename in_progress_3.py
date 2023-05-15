@@ -130,20 +130,6 @@ if st.sidebar.button('Submit'):
             st.success('You have lower risk of getting a heart disease!')
     
 ###-------------------------------------------------------------------------------------------------------------------------------------------------------------------####
-# BMI Meter
-def calculate_bmi(weight, height):
-    weight_kg = weight*2.205
-    height_m = (height*2.54)/100
-    bmi = weight_kg / (height_m ** 2)
-    return bmi
-
-st.title("BMI Meter")
-weight = st.number_input("Enter your weight:", min_value=0.0)
-height = st.number_input("Enter your height:", min_value=0.0)
-if weight > 0 and height > 0:
-    bmi = calculate_bmi(weight, height)
-    st.write("Your BMI:", bmi)
-
 # Hypertension Stage Meter
 def get_hypertension_stage(systolic, diastolic):
     if systolic >= 180 or diastolic >= 120:
@@ -164,56 +150,33 @@ if systolic > 0 and diastolic > 0:
     stage = get_hypertension_stage(systolic, diastolic)
     st.write("Your Hypertension Stage:", stage)       
 
-def preprocess(age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal ):   
  
-    
-    # Pre-processing user input   
-    if sex=="male":
-        sex=1 
-    else: sex=0
-    
-    
-    if cp=="Typical angina":
-        cp=0
-    elif cp=="Atypical angina":
-        cp=1
-    elif cp=="Non-anginal pain":
-        cp=2
-    elif cp=="Asymptomatic":
-        cp=2
-    
-    if exang=="Yes":
-        exang=1
-    elif exang=="No":
-        exang=0
- 
-    if fbs=="Yes":
-        fbs=1
-    elif fbs=="No":
-        fbs=0
- 
-    if slope=="Upsloping: better heart rate with excercise(uncommon)":
-        slope=0
-    elif slope=="Flatsloping: minimal change(typical healthy heart)":
-          slope=1
-    elif slope=="Downsloping: signs of unhealthy heart":
-        slope=2  
- 
-    if thal=="fixed defect: used to be defect but ok now":
-        thal=6
-    elif thal=="reversable defect: no proper blood movement when excercising":
-        thal=7
-    elif thal=="normal":
-        thal=2.31
+# BMI Meter
+st.title("BMI Meter")
+weight = st.sidebar.button('Submit')
+def preprocess_BMI(weight, height):
+    weight_kg = weight*2.205
+    height_m = (height*2.54)/100
+    bmi = weight_kg / (height_m ** 2)
+    # Pre-processing user input 
+    if bmi <18.5:
+        st.write("You are Underweight")
+    elif bmi>= 18.5 and bmi<25:
+        st.write("You are Normal")
+    elif bmi >=25 and bmi<30:
+        st.write("You are Overweight")
+    else:
+        st.write("You are Obese")
+  
 
-    if restecg=="Nothing to note":
-        restecg=0
-    elif restecg=="ST-T Wave abnormality":
-        restecg=1
-    elif restecg=="Possible or definite left ventricular hypertrophy":
-        restecg=2
-
-
+st.title("BMI Meter")
+weight = st.number_input("Enter your weight:", min_value=0.0)
+height = st.number_input("Enter your height:", min_value=0.0)
+if weight > 0 and height > 0:
+    bmi = calculate_bmi(weight, height)
+    st.write("Your BMI:", bmi) 
+    
+ 
     user_input=[age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal]
     user_input=np.array(user_input)
     user_input=user_input.reshape(1,-1)
