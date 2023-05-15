@@ -33,8 +33,8 @@ if st.button("Submit"):
     st.write("Your BMI:", bmi)
     st.plotly_chart(fig, use_container_width=True)
     # Generate a grid of BMI gauges
-    row1_col1, row1_col2, row1_col3 = st.beta_columns(3)
-    row2_col1, row2_col2, row2_col3 = st.beta_columns(3)
+    row1_col1 = st.beta_columns(1)
+    #row2_col1, row2_col2, row2_col3 = st.beta_columns(3)
 
     # Dummy BMI values for demonstration purposes
     bmi_values = [23.1, 28.7, 32.2, 19.5, 27.8, 33.9]
@@ -42,13 +42,4 @@ if st.button("Submit"):
     # Display BMI gauges in the grid
     with row1_col1:
         st.plotly_chart(create_bmi_gauge(bmi_values[0]))
-    with row1_col2:
-        st.plotly_chart(create_bmi_gauge(bmi_values[1]))
-    with row1_col3:
-        st.plotly_chart(create_bmi_gauge(bmi_values[2]))
-    with row2_col1:
-        st.plotly_chart(create_bmi_gauge(bmi_values[3]))
-    with row2_col2:
-        st.plotly_chart(create_bmi_gauge(bmi_values[4]))
-    with row2_col3:
-        st.plotly_chart(create_bmi_gauge(bmi_values[5]))
+
