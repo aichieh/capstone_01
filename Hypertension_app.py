@@ -136,6 +136,13 @@ st.metric(
     """,
     delta_color ="inverse"
 )
+#Error Prediction 
+@st.cache
+def errPred(df):
+    error = errGBR.predict(df)[0]
+    return error
+
+uncertainty = np.where(errPred(features) < 0, 0, errPred(features))
 
 # Reads in saved classification model
 #model2 = pickle.load(open('htn.pkl', 'rb'))
