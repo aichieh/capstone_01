@@ -22,7 +22,7 @@ st.set_page_config(page_title='Examining Hypertension Using Health Care Data', p
 st.markdown("<h1 style='text-align: center'>Examining Hypertension Using Health Care Data</h1><hr style='height:2px;border-width:0;color:gray;background-color:gray'>", unsafe_allow_html=True)
 
 # Read the data
-df = pd.read_csv("./output/df_stroke.csv")
+df = pd.read_csv("./output/final_adult_try.csv")
 if st.sidebar.checkbox("Display data", False):
     st.subheader("Show NHANES dataset")
     st.write(df)
@@ -33,40 +33,40 @@ Input your data here .
 """)
 sex = df['gender']
 age = df['age']
-weight = df['weight']
-height = df['height']
+#weight = df['weight']
+#height = df['height']
+BMI = df['BMI']
 #waist_circumference = df['waist_circumference']
 systolic_bp = df['systolic_bp']
 #heart_rate = df['heart_rate']
-#BMI = df['BMI']
-#hypertension = df['hypertension']
+hypertension = df['hypertension']
 take_HTN_medicine = df['take_HTN_medicine']
 high_cholesterol = df['high_cholesterol']
 take_HCL_medicine = df['take_HCL_medicine']
 diabetes = df['diabetes']
-#stroke = df['stroke']
-#heart_failure = df['heart_failure']
-#CAD = df['CAD']
-#angina = df['angina']
-#heart_attack = df['heart_attack']
+heart_failure = df['heart_failure']
+CAD = df['CAD']
+angina = df['angina']
+heart_attack = df['heart_attack']
+stroke = df['stroke']
 sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
 age_choice = st.sidebar.slider('Age', 1, 100, 30)
-weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
-height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
+BMI_choice = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
+#weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
+#height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
 #waist_circumference_choice  = st.sidebar.slider('Waist Circumference (inch)', 10.0, 80.0, 30.0)
 systolic_bp_choice = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
 #heart_rate_choice = st.sidebar.slider('Heart Rate (per minute)', 30.0, 150.0, 40.0)
-#BMI_choice = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
-#hypertension_choice = st.sidebar.selectbox('Have hypertension', ('NO', 'YES'))
+hypertension_choice = st.sidebar.selectbox('Have hypertension', ('NO', 'YES'))
 take_HTN_medicine_choice = st.sidebar.selectbox('Takes BP medicines', ('NO', 'YES'))
 high_cholesterol_choice = st.sidebar.selectbox('Have high cholesterol', ('NO', 'YES'))
 take_HCL_medicine_choice = st.sidebar.selectbox('Takes cholesterol medicines', ('NO', 'YES'))
 diabetes_choice = st.sidebar.selectbox('Have diabetes', ('NO', 'YES'))
+heart_failure_choice = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
+CAD_choice = st.sidebar.selectbox('Had any coronary heart disease', ('NO', 'YES'))
+angina_choice = st.sidebar.selectbox('Had any angina', ('NO', 'YES'))
+heart_attack_choice = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES'))
 #stroke_choice = st.sidebar.selectbox('Had any prevalent Stroke', ('NO', 'YES'))
-#heart_failure_choice = st.sidebar.selectbox('Had any heart failure', ('NO', 'YES'))
-#CAD_choice = st.sidebar.selectbox('Had any coronary heart disease', ('NO', 'YES'))
-#angina_choice = st.sidebar.selectbox('Had any angina', ('NO', 'YES'))
-#heart_attack_choice = st.sidebar.selectbox('Had any heart attack', ('NO', 'YES'))
 
 #engine_choice = st.sidebar.selectbox('', engines)
 # Creating the container for the first plot
@@ -84,26 +84,25 @@ yn=['NO', 'YES']
 
 tab1, tab2 = st.tabs(["Basic Health Information", "Chronic Disease Risk"])
   
-
 if st.sidebar.button('Submit'):
-        data = {'weight': weight_choice,
-                'height': height_choice,
-#                'BMI': BMI_choice,
+        data = {'gender': value(sex, sex_choice),
+                'age': age_choice,
+#                'weight': weight_choice,
+#                'height': height_choice,
+                'BMI': BMI_choice,
 #                'waist_circumference': waist_circumference_choice,
-#                'hypertension': value(yn, hypertension_choice),
+                'systolic_bp': systolic_bp_choice,
+                'hypertension': value(yn, hypertension_choice),
                 'take_HTN_medicine': value(yn, take_HTN_medicine_choice),
                 'high_cholesterol': value(yn, high_cholesterol_choice),
                 'take_HCL_medicine': value(yn, take_HCL_medicine_choice),
-#                'heart_rate': heart_rate_choice,
-                'systolic_bp': systolic_bp_choice,
-                'gender': value(sex, sex_choice),
-                'age': age_choice,
+#                'heart_rate': heart_rate_choice,              
                 'diabetes': value(yn, diabetes_choice),
-#                'heart_failure': value(yn, heart_failure_choice),
-#                'CAD': value(yn, CAD_choice),
-#                'angina': value(yn, angina_choice),
-#                'heart_attack': value(yn, heart_attack_choice),
-#                'stroke': value(yn, stroke_choice)
+                'heart_failure': value(yn, heart_failure_choice),
+                'CAD': value(yn, CAD_choice),
+                'angina': value(yn, angina_choice),
+                'heart_attack': value(yn, heart_attack_choice),
+                'stroke': value(yn, stroke_choice)
                }
         features = pd.DataFrame(data, index=[0])
         #features = ['weight','height','BMI','waist_circumference','hypertension','take_HTN_medicine','high_cholesterol','take_HCL_medicine','heart_rate','systolic_bp','gender','age',
@@ -112,7 +111,7 @@ if st.sidebar.button('Submit'):
         st.write(features)
 
         # Reads in saved classification model
-        model = pickle.load(open('stroke.pkl', 'rb'))
+        model = pickle.load(open('stroke_adult.pkl', 'rb'))
            
         # Apply model to make predictions
         prediction = model.predict(features)
@@ -131,23 +130,23 @@ if st.sidebar.button('Submit'):
     
 ###-------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 # Hypertension Stage Meter
-def get_hypertension_stage(systolic, diastolic):
-    if systolic >= 180 or diastolic >= 120:
+def get_hypertension_stage(systolic):
+    if systolic >= 180:
         return "Hypertensive Crisis"
-    elif systolic >= 140 or diastolic >= 90:
+    elif systolic >= 140:
         return "Stage 2 Hypertension"
-    elif systolic >= 130 or diastolic >= 80:
+    elif systolic >= 130:
         return "Stage 1 Hypertension"
-    elif systolic >= 120 and diastolic < 80:
+    elif systolic >= 120:
         return "Elevated"
     else:
         return "Normal"
 
 st.title("Hypertension Stage Meter")
 systolic = st.number_input("Enter your systolic blood pressure:", min_value=0)
-diastolic = st.number_input("Enter your diastolic blood pressure:", min_value=0)
-if systolic > 0 and diastolic > 0:
-    stage = get_hypertension_stage(systolic, diastolic)
+#diastolic = st.number_input("Enter your diastolic blood pressure:", min_value=0)
+if systolic > 0:
+    stage = get_hypertension_stage(systolic)
     st.write("Your Hypertension Stage:", stage)       
 
  
@@ -191,22 +190,3 @@ def create_bmi_gauge(bmi_value):
 
 # Streamlit App
 st.title("BMI Indicator Gauges")
-
-       
-
-if st.button("Predict"):    
-  if pred[0] == 0:
-    st.error('Warning! You have high risk of getting a heart attack!')
-    
-  else:
-    st.success('You have lower risk of getting a heart disease!')
-    
-   
-
-
-
-st.sidebar.subheader("About App")
-
-st.sidebar.info("This web app is helps you to find out whether you are at a risk of developing a heart disease.")
-st.sidebar.info("Enter the required fields and click on the 'Predict' button to check whether you have a healthy heart")
-st.sidebar.info("Don't forget to rate this app")
