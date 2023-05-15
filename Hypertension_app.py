@@ -138,13 +138,13 @@ st.metric(
 )
 
 # BMI Meter
-@st.cache(allow_output_mutation=True)
-st.title("BMI Meter")
-def calculate_bmi(weight, height):
-    weight_kg = weight*0.454
-    height_m = (height*2.54)/100
-    bmi = weight_kg / (height_m ** 2)
-    return bmi
+#@st.cache(allow_output_mutation=True)
+#st.title("BMI Meter")
+#def calculate_bmi(weight, height):
+#    weight_kg = weight*0.454
+#    height_m = (height*2.54)/100
+#    bmi = weight_kg / (height_m ** 2)
+#    return bmi
 
 #check = st.sidebar.button('Submit')
 #if(check):
