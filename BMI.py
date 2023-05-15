@@ -76,15 +76,8 @@ if st.button("Calculate BMI"):
     bmi = calculate_bmi(weight, height)
     st.write("Your BMI:", bmi)
     st.write(assesBMI(bmi))
-    
+    # Display BMI gauge for the submitted entry
+    st.plotly_chart(create_bmi_gauge(bmi))
 
-    # Create a grid of BMI indicator gauges
-    cols = st.number_input("Enter the number of columns:", min_value=1, value=3)
-    rows = (len(bmi) - 1) // cols + 1
-    for i in range(rows):
-        st.write("Row", i+1)
-        for j in range(cols):
-            index = i * cols + j
-            if index < len(bmi):
-                fig = create_bmi_gauge(bmi[index])
-                st.plotly_chart(fig, use_container_width=True)
+#fig = create_bmi_gauge(bmi[index])
+#st.plotly_chart(fig, use_container_width=True)
