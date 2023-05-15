@@ -222,25 +222,25 @@ def assesHTN(systolic, diastolic):
         inf = "Stage of Hypertension:\nHypertensive Crisis"
     return inf
 
-def create_hypertension_gauge(systolic, diastolic):
-    value = systolic / diastolic
+#def create_hypertension_gauge(systolic, diastolic):
+#    value = systolic / diastolic
 
-    fig = go.Figure()
-    fig.add_trace(go.Indicator(
-        mode="gauge+number",
-        value=value,
-        domain={'x': [0, 1], 'y': [0, 1]},
-        gauge={'axis': {'range': [0, 3]},
-               'bar': {'color': 'rgba(31, 119, 180, 0.7)'},
-               'steps': [{'range': [0, 1], 'color': 'green'},
-                         {'range': [1, 2], 'color': 'gold'},
-                         {'range': [2, 3], 'color': 'red'}],
-               'threshold': {'line': {'color': 'black', 'width': 4}, 'thickness': 0.75, 'value': 2}
-               }
-    ))
+#    fig = go.Figure()
+#    fig.add_trace(go.Indicator(
+#        mode="gauge+number",
+#        value=value,
+#        domain={'x': [0, 1], 'y': [0, 1]},
+#        gauge={'axis': {'range': [0, 3]},
+#               'bar': {'color': 'rgba(31, 119, 180, 0.7)'},
+#               'steps': [{'range': [0, 1], 'color': 'green'},
+#                         {'range': [1, 2], 'color': 'gold'},
+#                         {'range': [2, 3], 'color': 'red'}],
+#               'threshold': {'line': {'color': 'black', 'width': 4}, 'thickness': 0.75, 'value': 2}
+#               }
+#    ))
 
-    fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
-    return fig
+#    fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
+#    return fig
 
 # Streamlit App
 st.title("Hypertension Staging Indicator Gauges")
@@ -251,7 +251,7 @@ diastolic = st.number_input("Enter your Diastolic Blood Pressure(lower value) (m
 if st.button("Hypertension Staging"):
     st.write(assesHTN(systolic, diastolic))
     # Display BMI gauge for the submitted entry
-    st.plotly_chart(create_hypertension_gauge(systolic, diastolic))
+#    st.plotly_chart(create_hypertension_gauge(systolic, diastolic))
     
     
     
