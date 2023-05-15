@@ -130,63 +130,63 @@ if st.sidebar.button('Submit'):
     
 ###-------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 # Hypertension Stage Meter
-def get_hypertension_stage(systolic):
-    if systolic >= 180:
-        return "Hypertensive Crisis"
-    elif systolic >= 140:
-        return "Stage 2 Hypertension"
-    elif systolic >= 130:
-        return "Stage 1 Hypertension"
-    elif systolic >= 120:
-        return "Elevated"
-    else:
-        return "Normal"
+#def get_hypertension_stage(systolic):
+#    if systolic >= 180:
+#        return "Hypertensive Crisis"
+#    elif systolic >= 140:
+#        return "Stage 2 Hypertension"
+#    elif systolic >= 130:
+#        return "Stage 1 Hypertension"
+#    elif systolic >= 120:
+#        return "Elevated"
+#    else:
+#        return "Normal"
 
-st.title("Hypertension Stage Meter")
-systolic = st.number_input("Enter your systolic blood pressure:", min_value=0)
+#st.title("Hypertension Stage Meter")
+#systolic = st.number_input("Enter your systolic blood pressure:", min_value=0)
 #diastolic = st.number_input("Enter your diastolic blood pressure:", min_value=0)
-if systolic > 0:
-    stage = get_hypertension_stage(systolic)
-    st.write("Your Hypertension Stage:", stage)       
+#if systolic > 0:
+#    stage = get_hypertension_stage(systolic)
+#    st.write("Your Hypertension Stage:", stage)       
 
  
 # BMI Meter
-st.title("BMI Meter")
-def calculate_bmi(weight, height):
-    weight_kg = weight*0.454
-    height_m = (height*2.54)/100
-    bmi = weight_kg / (height_m ** 2)
-    return bmi
+#st.title("BMI Meter")
+#def calculate_bmi(weight, height):
+#    weight_kg = weight*0.454
+#    height_m = (height*2.54)/100
+#    bmi = weight_kg / (height_m ** 2)
+#    return bmi
 
-check = st.sidebar.button('Submit')
-if(check):
-    bmi = calculate_bmi(weight, height) 
-    st.title(f'Your BMI : {bmi}')
-    if bmi <18.5:
-        st.title("You are Underweight")
-    elif bmi>= 18.5 and bmi<25:
-        st.title("You are Normal")
-    elif bmi >=25 and bmi<30:
-        st.title("You are Overweight")
-    else:
-        st.title("You are Obese")
-        
-def create_bmi_gauge(bmi_value):
-    fig = go.Figure(go.Indicator(
-        mode = "gauge+number",
-        value = bmi_value,
-        domain = {'x': [0, 1], 'y': [0, 1]},
-        title = {'text': "BMI"},
-        gauge = {'axis': {'range': [None, 40]},
-                 'bar': {'color': "darkblue"},
-                 'steps' : [
-                     {'range': [0, 18.5], 'color': 'lightgray'},
-                     {'range': [18.5, 24.9], 'color': 'green'},
-                     {'range': [24.9, 29.9], 'color': 'yellow'},
-                     {'range': [29.9, 40], 'color': 'red'}],
-                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': value}}))
-    fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
-    return fig
+#check = st.sidebar.button('Submit')
+#if(check):
+#    bmi = calculate_bmi(weight, height) 
+#    st.title(f'Your BMI : {bmi}')
+#    if bmi <18.5:
+#        st.title("You are Underweight")
+#    elif bmi>= 18.5 and bmi<25:
+#        st.title("You are Normal")
+#    elif bmi >=25 and bmi<30:
+#        st.title("You are Overweight")
+#    else:
+#        st.title("You are Obese")
+#        
+#def create_bmi_gauge(bmi_value):
+#    fig = go.Figure(go.Indicator(
+#        mode = "gauge+number",
+#        value = bmi_value,
+#        domain = {'x': [0, 1], 'y': [0, 1]},
+#        title = {'text': "BMI"},
+#        gauge = {'axis': {'range': [None, 40]},
+#                 'bar': {'color': "darkblue"},
+#                 'steps' : [
+#                     {'range': [0, 18.5], 'color': 'lightgray'},
+#                     {'range': [18.5, 24.9], 'color': 'green'},
+#                     {'range': [24.9, 29.9], 'color': 'yellow'},
+#                     {'range': [29.9, 40], 'color': 'red'}],
+#                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': value}}))
+#    fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
+#    return fig
 
 # Streamlit App
 st.title("BMI Indicator Gauges")
