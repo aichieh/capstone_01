@@ -172,7 +172,7 @@ if(check):
     else:
         st.title("You are Obese")
         
- def create_bmi_gauge(bmi_value):
+def create_bmi_gauge(bmi_value):
     fig = go.Figure(go.Indicator(
         mode = "gauge+number",
         value = bmi_value,
