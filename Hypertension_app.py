@@ -111,30 +111,30 @@ st.write("Risk of Hypertension")
 risk = (prediction_proba[1]*100).round(2) 
 st.write(risk, " %")
 
-def userData():
-    return []
+#def userData():
+#    return []
 
-@st.cache(allow_output_mutation=True)
-def delta(l, p):
-    if len(l) == 0:
-        l.extend([0, round(p*100, 1)])
-        d = 0
-    else:
-        l.pop(0)
-        l.append(round(p*100, 1))
-        d = l[1] - l[0]
-    return d
+#@st.cache(allow_output_mutation=True)
+#def delta(l, p):
+#    if len(l) == 0:
+#        l.extend([0, round(p*100, 1)])
+#        d = 0
+#    else:
+#        l.pop(0)
+#        l.append(round(p*100, 1))
+#        d = l[1] - l[0]
+#    return d
 
 #col1, col2 = st.columns(2)
-st.metric(
-    label="Risk of Stroke", 
-    value= str(risk) + " %", 
-    delta=str(delta(userData(), risk)) + " percentage points", 
-    help="""
-    The change in percentage points is displayed below.
-    """,
-    delta_color ="inverse"
-)
+#st.metric(
+#    label="Risk of Stroke", 
+#    value= str(risk) + " %", 
+#    delta=str(delta(userData(), risk)) + " percentage points", 
+#    help="""
+#    The change in percentage points is displayed below.
+#    """,
+#    delta_color ="inverse"
+#)
 
 # Reads in saved classification model
 #model2 = pickle.load(open('htn.pkl', 'rb'))
