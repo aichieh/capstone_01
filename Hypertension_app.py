@@ -34,8 +34,8 @@ Input your data here .
 """)
 sex = df['gender']
 age = df['age']
-#weight = df['weight']
-#height = df['height']
+weight 
+height 
 BMI = df['BMI']
 #waist_circumference = df['waist_circumference']
 systolic_bp = df['systolic_bp']
@@ -53,8 +53,8 @@ heart_attack = df['heart_attack']
 sex_choice = st.sidebar.selectbox('Sex', ('Female', 'Male'))
 age_choice = st.sidebar.slider('Age', 1, 100, 30)
 BMI_choice = st.sidebar.slider('BMI (kg/m^2)', 15.0, 70.0, 23.0)
-#weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
-#height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
+weight_choice = st.sidebar.slider('Weight (lb)', 10.0, 400.0, 150.0)
+height_choice = st.sidebar.slider('Height (inch)', 10.0, 65.0, 80.0)
 #waist_circumference_choice  = st.sidebar.slider('Waist Circumference (inch)', 10.0, 80.0, 30.0)
 systolic_bp_choice = st.sidebar.slider('Blood Pressure(upper value) (mmHg)', 100.0, 250.0, 120.0)
 #heart_rate_choice = st.sidebar.slider('Heart Rate (per minute)', 30.0, 150.0, 40.0)
@@ -136,16 +136,45 @@ st.metric(
     """,
     delta_color ="inverse"
 )
-#Error Prediction 
-@st.cache
-def errPred(df):
-    error = errGBR.predict(df)[0]
-    return error
 
-uncertainty = np.where(errPred(features) < 0, 0, errPred(features))
-tab1.text("Confidence in the risk assessment:\n" + \
-          str(round((1-uncertainty)*100, 1)) + " %."
-)
+# BMI Meter
+@st.cache(allow_output_mutation=True)
+#st.title("BMI Meter")
+#def calculate_bmi(weight, height):
+#    weight_kg = weight*0.454
+#    height_m = (height*2.54)/100
+#    bmi = weight_kg / (height_m ** 2)
+#    return bmi
+
+#check = st.sidebar.button('Submit')
+#if(check):
+#    bmi = calculate_bmi(weight, height) 
+#    st.title(f'Your BMI : {bmi}')
+#    if bmi <18.5:
+#        st.title("You are Underweight")
+#    elif bmi>= 18.5 and bmi<25:
+#        st.title("You are Normal")
+#    elif bmi >=25 and bmi<30:
+#        st.title("You are Overweight")
+#    else:
+#        st.title("You are Obese")
+#        
+#def create_bmi_gauge(bmi_value):
+#    fig = go.Figure(go.Indicator(
+#        mode = "gauge+number",
+#        value = bmi_value,
+#        domain = {'x': [0, 1], 'y': [0, 1]},
+#        title = {'text': "BMI"},
+#        gauge = {'axis': {'range': [None, 40]},
+#                 'bar': {'color': "darkblue"},
+#                 'steps' : [
+#                     {'range': [0, 18.5], 'color': 'lightgray'},
+#                     {'range': [18.5, 24.9], 'color': 'green'},
+#                     {'range': [24.9, 29.9], 'color': 'yellow'},
+#                     {'range': [29.9, 40], 'color': 'red'}],
+#                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': value}}))
+#    fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
+#    return fig
 # Reads in saved classification model
 #model2 = pickle.load(open('htn.pkl', 'rb'))
 
