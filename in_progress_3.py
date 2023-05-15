@@ -82,7 +82,7 @@ def value(lst, string):
 sex=['Female', 'Male']
 yn=['NO', 'YES']
 
-tab1, tab2 = st.tabs(["Basic Health Information", "Chronic Disease Risk"])
+tab1, tab2 = st.tabs(["BMI, Hypertension, Stroke", "Chronic Disease Risk"])
   
 if st.sidebar.button('Submit'):
         data = {'gender': value(sex, sex_choice),
@@ -189,4 +189,4 @@ if st.sidebar.button('Submit'):
 #    return fig
 
 # Streamlit App
-st.title("BMI Indicator Gauges")
+#st.title("BMI Indicator Gauges")
