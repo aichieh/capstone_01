@@ -47,7 +47,7 @@ st.title("BMI Indicator Gauges")
 weight = st.number_input("Enter your weight (in lb):", min_value=0.0)
 height = st.number_input("Enter your height (in inch):", min_value=0.0)
 
-if st.button("Submit"):
+if st.button("Calculate BMO"):
     bmi = calculate_bmi(weight, height)
     st.write("Your BMI:", bmi)
 
