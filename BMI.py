@@ -34,13 +34,13 @@ if st.button("Submit"):
     #st.plotly_chart(fig, use_container_width=True)
     # Generate a grid of BMI gauges
 
-     fig.add_trace(
-            go.Indicator(
-                mode="gauge+number",
-                value=bmi,
-                title="BMI",
-                domain={'x': [0, 1], 'y': [0, 1]},
-                gauge={'axis': {'visible': False}},
+    fig.add_trace(
+        go.Indicator(
+            mode="gauge+number",
+            value=bmi,
+            title="BMI",
+            domain={'x': [0, 1], 'y': [0, 1]},
+            gauge={'axis': {'visible': False}},
             ),
             row=row, col=col
         )
