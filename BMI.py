@@ -44,8 +44,8 @@ def create_bmi_gauge(value):
 # Streamlit App
 st.title("BMI Indicator Gauges")
 
-weight = st.number_input("Enter your weight (in kg):", min_value=0.0)
-height = st.number_input("Enter your height (in meters):", min_value=0.0)
+weight = st.number_input("Enter your weight (in lb):", min_value=0.0)
+height = st.number_input("Enter your height (in inch):", min_value=0.0)
 
 if st.button("Submit"):
     bmi = calculate_bmi(weight, height)
