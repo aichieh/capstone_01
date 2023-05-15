@@ -266,9 +266,10 @@ systolic = st.number_input("Enter your Systolic Blood Pressure(upper value) (mmH
 diastolic = st.number_input("Enter your Diastolic Blood Pressure(lower value) (mmHg)", min_value=0.0)
 
 # Streamlit App
-if st.button("Go"):
+if st.button("check it out"):
     st.title("Blood Pressure Gauges")
     st.subheader("Systolic Blood Pressure")
     plot_systolic_gauge(systolic_bp
+    
     st.subheader("Diastolic Blood Pressure")
     plot_diastolic_gauge(diastolic_bp)
