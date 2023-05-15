@@ -173,16 +173,6 @@ if(check):
         st.title("You are Obese")
   
 
-st.title("BMI Meter")
-weight = st.number_input("Enter your weight:", min_value=0.0)
-height = st.number_input("Enter your height:", min_value=0.0)
-if weight > 0 and height > 0:
-    bmi = calculate_bmi(weight, height)
-    st.write("Your BMI:", bmi) 
-    
- 
-
-
     
 
        
