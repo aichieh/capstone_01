@@ -4,6 +4,8 @@ import plotly.graph_objects as go
 def calculate_bmi(weight, height):
     bmi = weight / (height ** 2)
     return bmi
+# Create subplots with grid layout
+fig = make_subplots(rows=1, cols=1, subplot_titles=("Person 1"))
 
 def create_bmi_gauge(bmi_value):
     fig = go.Figure(go.Indicator(
