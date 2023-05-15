@@ -136,7 +136,32 @@ st.metric(
     """,
     delta_color ="inverse"
 )
+#######Additional Information##################
 
+@st.cache(allow_output_mutation=True)
+def assesBMI(BMI, AGE):
+    if BMI > 45 and AGE > 75:
+        inf = """
+        Note: Information is unreliable.
+        BMI > 45 and age > 75.
+        """
+    elif BMI <= 10:
+        inf = "BMI level:\nBMI too low"
+    elif BMI < 18.5 and BMI > 10:
+        inf = "BMI level:\nShortweight"
+    elif BMI >= 18.5 and BMI < 25:
+        inf = "BMI level:\nNormal Weight"
+    elif BMI >= 25 and BMI < 30:
+        inf = "BMI level:\nOverweight"
+    elif BMI >= 30 and BMI < 35:
+        inf = "BMI level:\nModerate Obesity"
+    elif BMI >= 35 and BMI < 40:
+        inf = "BMI level:\nStrong Obesity"
+    elif BMI >= 40:
+        inf = "BMI level:\nExtreme Obesity"
+    return inf
+
+tab1.text(assesBMI(bmi, age))
 # BMI Meter
 #@st.cache(allow_output_mutation=True)
 #st.title("BMI Meter")
