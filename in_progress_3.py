@@ -102,7 +102,7 @@ if st.sidebar.button('Submit'):
                 'CAD': value(yn, CAD_choice),
                 'angina': value(yn, angina_choice),
                 'heart_attack': value(yn, heart_attack_choice),
-                'stroke': value(yn, stroke_choice)
+#                'stroke': value(yn, stroke_choice)
                }
         features = pd.DataFrame(data, index=[0])
         #features = ['weight','height','BMI','waist_circumference','hypertension','take_HTN_medicine','high_cholesterol','take_HCL_medicine','heart_rate','systolic_bp','gender','age',
