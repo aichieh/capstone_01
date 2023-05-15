@@ -251,6 +251,6 @@ diastolic = st.number_input("Enter your Diastolic Blood Pressure(lower value) (m
 if st.button("Hypertension Staging"):
     st.write(assesHTN(systolic, diastolic))
     # Display BMI gauge for the submitted entry
-    create_hypertension_gauge(systolic, diastolic)
+    st.plotly_chart(create_hypertension_gauge(systolic, diastolic))
 
    
