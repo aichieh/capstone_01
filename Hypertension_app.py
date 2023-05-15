@@ -143,7 +143,9 @@ def errPred(df):
     return error
 
 uncertainty = np.where(errPred(features) < 0, 0, errPred(features))
-
+tab1.text("Confidence in the risk assessment:\n" + \
+          str(round((1-uncertainty)*100, 1)) + " %."
+)
 # Reads in saved classification model
 #model2 = pickle.load(open('htn.pkl', 'rb'))
 
