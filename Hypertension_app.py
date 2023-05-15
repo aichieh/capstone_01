@@ -166,7 +166,7 @@ st.metric(
 #prediction2 = model2.predict(features2)
 #prediction_proba2 = model2.predict_proba(features2).reshape(2,)
 #st.write("Risk of Hypertension") 
-#risk2 = (prediction_proba2[1]*100).round(2) 
+#risk2 = (prediction_proba[1]*100).round(2)
 #st.write(risk2, " %")
 
 #col2.metric(
