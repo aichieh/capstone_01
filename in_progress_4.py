@@ -227,18 +227,17 @@ def create_hypertension_gauge(systolic, diastolic):
 
     fig = go.Figure()
     fig.add_trace(go.Indicator(
-        mode = "gauge+number",
-        value = value,
-        domain = {'x': [0, 1], 'y': [0, 1]},
-        title = {'text': "Hypertension"},
-        gauge = {'axis': {'range': [None, 200]},
-                 'bar': {'color': "darkblue"},
-                 'steps' : [
-                     {'range': [0, 120], 'color': 'lightgray'},
-                     {'range': [18.5, 24.9], 'color': 'green'},
-                     {'range': [24.9, 29.9], 'color': 'yellow'},
-                     {'range': [29.9, 40], 'color': 'red'}],
-                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': 30}}))
+        mode="gauge+number",
+        value=value,
+        domain={'x': [0, 1], 'y': [0, 1]},
+        gauge={'axis': {'range': [0, 3]},
+               'bar': {'color': 'rgba(31, 119, 180, 0.7)'},
+               'steps': [{'range': [0, 1], 'color': 'green'},
+                         {'range': [1, 2], 'color': 'gold'},
+                         {'range': [2, 3], 'color': 'red'}],
+               'threshold': {'line': {'color': 'black', 'width': 4}, 'thickness': 0.75, 'value': 2}
+               }
+    ))
 
     fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
     return fig
