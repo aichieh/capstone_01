@@ -8,6 +8,7 @@ import plotly.io as pio
 import matplotlib.pyplot as plt
 import pickle
 import plotly.graph_objects as go
+import pydeck as pdk
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
@@ -222,26 +223,6 @@ def assesHTN(systolic, diastolic):
         inf = "Stage of Hypertension:\nHypertensive Crisis"
     return inf
 
-def create_hypertension_gauge(systolic, diastolic):
-    value = systolic / diastolic
-
-    fig = go.Figure()
-    fig.add_trace(go.Indicator(
-        mode="gauge+number",
-        value=value,
-        domain={'x': [0, 1], 'y': [0, 1]},
-        gauge={'axis': {'range': [0, 3]},
-               'bar': {'color': 'rgba(31, 119, 180, 0.7)'},
-               'steps': [{'range': [0, 1], 'color': 'green'},
-                         {'range': [1, 2], 'color': 'gold'},
-                         {'range': [2, 3], 'color': 'red'}],
-               'threshold': {'line': {'color': 'black', 'width': 4}, 'thickness': 0.75, 'value': 2}
-               }
-    ))
-
-    fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
-    return fig
-
 # Streamlit App
 st.title("Hypertension Staging Indicator Gauges")
 
@@ -253,4 +234,47 @@ if st.button("Hypertension Staging"):
     # Display BMI gauge for the submitted entry
     st.plotly_chart(create_hypertension_gauge(systolic, diastolic))
 
+def plot_gauge(title, value, min_value, max_value):
+    gauge_layer = pdk.Layer(
+        "GaugeLayer",
+        data=[{"value": value}],
+        get_value="value",
+        gauge_color_namespace="value",
+        gauge_color_scale=[
+            [min_value, "green"],
+            [(min_value + max_value) / 2, "yellow"],
+            [max_value, "red"],
+        ],
+        gauge_radius=0.95,
+        gauge_inner_radius=0.75,
+        pickable=False,
+        auto_highlight=False,
+    )
+
+    view_state = pdk.ViewState(
+        latitude=0,
+        longitude=0,
+        zoom=0,
+        bearing=0,
+        pitch=0,
+    )
+
+    deck = pdk.Deck(
+        layers=[gauge_layer],
+        initial_view_state=view_state,
+        views=[pdk.View(type="GaugeView")],
+    )
+
+    st.pydeck_chart(deck)
+
+if st.button("Hypertension Staging"):
+    st.write(assesHTN(systolic, diastolic))
+    # Display BMI gauge for the submitted entry
+    st.plotly_chart(create_hypertension_gauge(systolic, diastolic))
+    st.title("Blood Pressure Gauges")
+    st.subheader("Systolic Blood Pressure")
+    plot_gauge("Systolic BP", systolic_bp, 0, 200)
+
+    st.subheader("Diastolic Blood Pressure")
+    plot_gauge("Diastolic BP", diastolic_bp, 0, 120)
    
