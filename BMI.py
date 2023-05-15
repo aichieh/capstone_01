@@ -25,7 +25,7 @@ def calculate_bmi(weight, height):
     return bmi
 
 @st.cache(allow_output_mutation=True)
-def assesBMI(BMI:
+def assesBMI(BMI):
     if BMI > 45:
         inf = """
         Note: Information is unreliable.
