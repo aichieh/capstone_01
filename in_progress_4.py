@@ -223,16 +223,11 @@ def assesHTN(systolic, diastolic):
         inf = "Stage of Hypertension:\nHypertensive Crisis"
     return inf
 
-# Streamlit App
-st.title("Hypertension Staging Indicator Gauges")
+def plot_systolic_gauge(value):
+    plot_gauge("Systolic Blood Pressure", value, 0, 200)
 
-systolic = st.number_input("Enter your Systolic Blood Pressure(upper value) (mmHg):", min_value=0.0)
-diastolic = st.number_input("Enter your Diastolic Blood Pressure(lower value) (mmHg)", min_value=0.0)
-
-if st.button("Hypertension Staging"):
-    st.write(assesHTN(systolic, diastolic))
-    # Display BMI gauge for the submitted entry
-    st.plotly_chart(create_hypertension_gauge(systolic, diastolic))
+def plot_diastolic_gauge(value):
+    plot_gauge("Diastolic Blood Pressure", value, 0, 120)
 
 def plot_gauge(title, value, min_value, max_value):
     gauge_layer = pdk.Layer(
@@ -267,14 +262,13 @@ def plot_gauge(title, value, min_value, max_value):
 
     st.pydeck_chart(deck)
 
-if st.button("Hypertension Staging"):
-    st.write(assesHTN(systolic, diastolic))
-    # Display BMI gauge for the submitted entry
-    st.plotly_chart(create_hypertension_gauge(systolic, diastolic))
+systolic = st.number_input("Enter your Systolic Blood Pressure(upper value) (mmHg):", min_value=0.0)
+diastolic = st.number_input("Enter your Diastolic Blood Pressure(lower value) (mmHg)", min_value=0.0)
+
+# Streamlit App
+if st.button("Go"):
     st.title("Blood Pressure Gauges")
     st.subheader("Systolic Blood Pressure")
-    plot_gauge("Systolic BP", systolic_bp, 0, 200)
-
+    plot_systolic_gauge(systolic_bp
     st.subheader("Diastolic Blood Pressure")
-    plot_gauge("Diastolic BP", diastolic_bp, 0, 120)
-   
+    plot_diastolic_gauge(diastolic_bp)
