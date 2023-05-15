@@ -154,7 +154,7 @@ if systolic > 0 and diastolic > 0:
 # BMI Meter
 st.title("BMI Meter")
 def calculate_bmi(weight, height):
-    weight_kg = weight*2.205
+    weight_kg = weight*0.454
     height_m = (height*2.54)/100
     bmi = weight_kg / (height_m ** 2)
     return bmi
@@ -171,9 +171,26 @@ if(check):
         st.title("You are Overweight")
     else:
         st.title("You are Obese")
-  
+        
+ def create_bmi_gauge(bmi_value):
+    fig = go.Figure(go.Indicator(
+        mode = "gauge+number",
+        value = bmi_value,
+        domain = {'x': [0, 1], 'y': [0, 1]},
+        title = {'text': "BMI"},
+        gauge = {'axis': {'range': [None, 40]},
+                 'bar': {'color': "darkblue"},
+                 'steps' : [
+                     {'range': [0, 18.5], 'color': 'lightgray'},
+                     {'range': [18.5, 24.9], 'color': 'green'},
+                     {'range': [24.9, 29.9], 'color': 'yellow'},
+                     {'range': [29.9, 40], 'color': 'red'}],
+                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': value}}))
+    fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
+    return fig
 
-    
+# Streamlit App
+st.title("BMI Indicator Gauges")
 
        
 
