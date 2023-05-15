@@ -111,6 +111,7 @@ prediction_proba = model.predict_proba(features).reshape(2,)
 risk = (prediction_proba[1]*100).round(2)
 #st.write(risk, " %")
 
+@st.cache(allow_output_mutation=True)
 def userData():
     return []
 
