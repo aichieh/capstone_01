@@ -31,15 +31,21 @@ height = st.number_input("Enter your height (in meters):", min_value=0.0)
 if st.button("Submit"):
     bmi = calculate_bmi(weight, height)
     st.write("Your BMI:", bmi)
-    st.plotly_chart(fig, use_container_width=True)
+    #st.plotly_chart(fig, use_container_width=True)
     # Generate a grid of BMI gauges
-    row1_col1 = st.beta_columns(1)
-    #row2_col1, row2_col2, row2_col3 = st.beta_columns(3)
 
-    # Dummy BMI values for demonstration purposes
-    bmi_values = [23.1, 28.7, 32.2, 19.5, 27.8, 33.9]
+     fig.add_trace(
+            go.Indicator(
+                mode="gauge+number",
+                value=bmi,
+                title="BMI",
+                domain={'x': [0, 1], 'y': [0, 1]},
+                gauge={'axis': {'visible': False}},
+            ),
+            row=row, col=col
+        )
 
-    # Display BMI gauges in the grid
-    with row1_col1:
-        st.plotly_chart(create_bmi_gauge(bmi_values[0]))
+    # Update layout and display the plot
+    fig.update_layout(height=600, width=800, title="BMI Indicators")
+    fig.show()
 
