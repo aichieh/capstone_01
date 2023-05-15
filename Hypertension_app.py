@@ -129,8 +129,8 @@ def delta(l, p):
 #col1, col2 = st.columns(2)
 st.metric(
     label="Risk of Stroke", 
-    value= str((round(prediction_proba*100/adjst, 1) + " %", 
-    delta=str(round(delta(userData(), prediction_proba)/adjst)) + " percentage points", 
+    value= str((round(prediction_proba*100, 1) + " %", 
+    delta=str(round(delta(userData(), prediction_proba, 2))) + " percentage points", 
     help="""
     The change in percentage points is displayed below.
     """,
