@@ -48,7 +48,8 @@ def assesBMI(BMI):
     return inf
 
 def create_bmi_gauge(value):
-    fig = go.Figure(go.Indicator(
+    fig = go.Figure()
+    fig.add_trace(go.Indicator(
         mode = "gauge+number",
         value = value,
         domain = {'x': [0, 1], 'y': [0, 1]},
@@ -60,8 +61,9 @@ def create_bmi_gauge(value):
                      {'range': [18.5, 24.9], 'color': 'green'},
                      {'range': [24.9, 29.9], 'color': 'yellow'},
                      {'range': [29.9, 40], 'color': 'red'}],
-                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': value}}))
+                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': 30}}))
 
+    fig.update_layout(height=200, margin=dict(l=10, r=10, t=10, b=10))
     return fig
 
 # Streamlit App
