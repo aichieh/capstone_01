@@ -24,6 +24,29 @@ def calculate_bmi(weight, height):
     bmi = weight_kg / (height_m ** 2)
     return bmi
 
+@st.cache(allow_output_mutation=True)
+def assesBMI(BMI:
+    if BMI > 45:
+        inf = """
+        Note: Information is unreliable.
+        BMI > 45.
+        """
+    elif BMI <= 10:
+        inf = "BMI level:\nBMI too low"
+    elif BMI < 18.5:
+        inf = "BMI level:\nUnderweight"
+    elif BMI >= 18.5 and BMI < 25:
+        inf = "BMI level:\nNormal Weight"
+    elif BMI >= 25 and BMI < 30:
+        inf = "BMI level:\nOverweight"
+    elif BMI >= 30 and BMI < 35:
+        inf = "BMI level:\nModerate Obesity"
+    elif BMI >= 35 and BMI < 40:
+        inf = "BMI level:\nStrong Obesity"
+    elif BMI >= 40:
+        inf = "BMI level:\nExtreme Obesity"
+    return inf
+
 def create_bmi_gauge(value):
     fig = go.Figure(go.Indicator(
         mode = "gauge+number",
@@ -50,6 +73,8 @@ height = st.number_input("Enter your height (in inch):", min_value=0.0)
 if st.button("Calculate BMI"):
     bmi = calculate_bmi(weight, height)
     st.write("Your BMI:", bmi)
+    st.write(assesBMI(bmi))
+    
 
     # Create a grid of BMI indicator gauges
     cols = st.number_input("Enter the number of columns:", min_value=1, value=3)
