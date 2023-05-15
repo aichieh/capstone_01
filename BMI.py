@@ -12,8 +12,8 @@ from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 
-# Create subplots with grid layout
-fig = make_subplots(rows=2, cols=2, subplot_titles=("Person 1", "Person 2", "Person 3", "Person 4"))
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 # Create subplots with grid layout
 fig = make_subplots(rows=2, cols=2, subplot_titles=("Person 1", "Person 2", "Person 3", "Person 4"))
