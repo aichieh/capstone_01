@@ -138,7 +138,7 @@ st.metric(
 )
 
 # BMI Meter
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
 #st.title("BMI Meter")
 #def calculate_bmi(weight, height):
 #    weight_kg = weight*0.454
