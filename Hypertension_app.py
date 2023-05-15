@@ -161,7 +161,7 @@ def assesBMI(BMI, AGE):
         inf = "BMI level:\nExtreme Obesity"
     return inf
 
-tab1.text(assesBMI(bmi, age))
+st.text(assesBMI(bmi, age))
 # BMI Meter
 #@st.cache(allow_output_mutation=True)
 #st.title("BMI Meter")
