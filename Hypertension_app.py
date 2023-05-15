@@ -108,7 +108,7 @@ model = pickle.load(open('stroke_adult.pkl', 'rb'))
 prediction = model.predict(features)
 prediction_proba = model.predict_proba(features).reshape(2,)
 #st.write("Risk of Hypertension") 
-#risk = (prediction_proba[1]*100).round(2)
+risk = (prediction_proba[1]*100).round(2)
 #st.write(risk, " %")
 
 @st.cache(allow_output_mutation=True)
@@ -129,8 +129,8 @@ def delta(l, p):
 #col1, col2 = st.columns(2)
 st.metric(
     label="Risk of Stroke", 
-    value= str((round(prediction_proba*100, 1) + " %", 
-    delta=str(round(delta(userData(), prediction_proba, 2))) + " percentage points", 
+    value= str(risk) + " %", 
+    delta=str(delta(userData(), risk)) + " percentage points", 
     help="""
     The change in percentage points is displayed below.
     """,
