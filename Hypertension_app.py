@@ -108,7 +108,7 @@ model = pickle.load(open('stroke_adult.pkl', 'rb'))
 prediction = model.predict(features)
 prediction_proba = model.predict_proba(features).reshape(2,)
 #st.write("Risk of Hypertension") 
-risk = (rediction_proba[1]*100)
+#risk = (rediction_proba[1]*100)
 #st.write(risk, " %")
 
 def userData():
