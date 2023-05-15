@@ -122,7 +122,7 @@ def delta(l, p):
         d = 0
     else:
         l.pop(0)
-        l.append(round(p/100, 1))
+        l.append(round(p/100, 2))
         d = l[1] - l[0]
     return d
 
